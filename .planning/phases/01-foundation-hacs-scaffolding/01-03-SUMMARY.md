@@ -92,7 +92,7 @@ completed: 2026-04-20
 | 2 | Human verifies GitLab pipeline runs green + enables "Pipelines must succeed" MR gate | (checkpoint — no commit) | — | — |
 | 3 | Tag v0.1.0 and push to GitLab | (tag object `8ca047b`) | — | — |
 
-**Plan metadata:** (to be added — final metadata commit below)
+**Plan metadata:** `af3a876` (docs: complete plan — bundles this SUMMARY.md + STATE.md + ROADMAP.md + REQUIREMENTS.md updates)
 
 ## Tag
 
