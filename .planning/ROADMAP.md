@@ -69,8 +69,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: WebSocket client + event-to-coordinator adapter + binary_sensor platform
-- [ ] 03-02: Reconnect/backoff logic, poll-fallback interplay, integration tests for connection lifecycle
+- [ ] 03-01-PLAN.md — WebSocket client + binary_sensor platform + __init__.py wiring + manifest/test atomic flip + version 0.3.0 (RT-01, RT-02, RT-03, RT-04)
+- [ ] 03-02-PLAN.md — tests/test_websocket.py (4 tests) + tests/test_binary_sensor.py (2 tests) + coverage gate + annotated v0.3.0 tag (QA-02)
 
 ### Phase 4: Custom Lovelace card
 **Goal**: A user adds a single `type: custom:party-dispenser-card` card to their dashboard and sees a polished recipe grid + live queue + summary; tapping a recipe places an order and tapping a queue item cancels it — all via the integration's services.
