@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.tox/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+dist/
+build/
+
+# IDE / editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Node (for Phase 4 card build)
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+*.tsbuildinfo
+
+# Card build artifacts (Phase 4)
+www/community/party-dispenser-card/dist/
+www/community/party-dispenser-card/*.js
+
+# Local dev HA config (if someone tests locally)
+config/
+home-assistant*.log
