@@ -51,10 +51,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 02-01: Config flow (user step + options flow for token rotation)
-- [ ] 02-02: DataUpdateCoordinator + REST client wrapping backend endpoints
-- [ ] 02-03: Sensor entity platform + device registry wiring
-- [ ] 02-04: Services registration + `pytest-homeassistant-custom-component` test suite
+- [ ] 02-01-PLAN.md — Config flow (ConfigFlow + OptionsFlowHandler; CFG-01/02/03)
+- [ ] 02-02-PLAN.md — Scaffolding + api.py + coordinator.py + entity.py + __init__.py extension (runtime_data pattern; QA-01 partial)
+- [ ] 02-03-PLAN.md — Sensor platform (5 SensorEntity subclasses + device_registry via shared DeviceInfo; INT-01, INT-02)
+- [ ] 02-04-PLAN.md — Wave-0 CI scaffolding + services.py + full pytest suite (INT-03, INT-04, INT-05, QA-01 full)
 
 ### Phase 3: Realtime push
 **Goal**: Order placements and queue changes propagate from backend → HA entities sub-second via the WebSocket broadcaster, with graceful fallback when the socket drops.
