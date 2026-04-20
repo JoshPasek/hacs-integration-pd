@@ -7,7 +7,7 @@
 
 ### HACS Distribution
 
-- [ ] **HACS-01**: Repo is HACS-installable as a custom repository (root `hacs.json`, valid `custom_components/party_dispenser/manifest.json`, `info.md`)
+- [x] **HACS-01**: Repo is HACS-installable as a custom repository (root `hacs.json`, valid `custom_components/party_dispenser/manifest.json`, `info.md`)
 - [ ] **HACS-02**: Semver release tags drive HACS version selection (tags on GitLab propagate to GitHub mirror)
 - [ ] **HACS-03**: Card is discoverable under the HACS "Frontend" category via a second `hacs.json` entry or combined config
 
@@ -51,7 +51,7 @@
 
 ### Distribution & Release
 
-- [ ] **REL-01**: Primary repo on `gitlab.paskiemgmt.com/ava-organization/party-dispenser/hacs-integration-pd`
+- [x] **REL-01**: Primary repo on `gitlab.paskiemgmt.com/ava-organization/party-dispenser/hacs-integration-pd`
 - [ ] **REL-02**: On tag push, CI mirrors commits + tag to a private GitHub repo
 - [ ] **REL-03**: GitHub release is auto-created with release notes derived from the tag message
 - [ ] **REL-04**: HACS install from the GitHub URL succeeds end-to-end (smoke test)
@@ -60,7 +60,7 @@
 
 - [ ] **DOC-01**: README covers install, config flow, card usage, troubleshooting
 - [ ] **DOC-02**: Migration guide maps every existing `party_dispenser.yaml` capability to the HACS equivalent
-- [ ] **DOC-03**: `info.md` renders correctly in the HACS UI
+- [x] **DOC-03**: `info.md` renders correctly in the HACS UI
 - [ ] **DOC-04**: At least 3 screenshots: HACS install, config flow, live card
 
 ## v2 Requirements
@@ -91,7 +91,7 @@ Deferred to future releases — not in v1.0 scope.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| HACS-01 | Phase 1 | Pending |
+| HACS-01 | Phase 1 | Complete |
 | HACS-02 | Phase 5 | Pending |
 | HACS-03 | Phase 4 | Pending |
 | CFG-01 | Phase 2 | Pending |
@@ -117,11 +117,11 @@ Deferred to future releases — not in v1.0 scope.
 | QA-02 | Phase 3 | Pending |
 | QA-03 | Phase 4 | Pending |
 | QA-04 | Phase 1 (skeleton), Phase 5 (full) | Pending |
-| REL-01 | Phase 1 | Pending |
+| REL-01 | Phase 1 | Complete |
 | REL-02 | Phase 5 | Pending |
 | REL-03 | Phase 5 | Pending |
 | REL-04 | Phase 5 | Pending |
 | DOC-01 | Phase 6 | Pending |
 | DOC-02 | Phase 6 | Pending |
-| DOC-03 | Phase 1 (stub), Phase 6 (full) | Pending |
+| DOC-03 | Phase 1 (stub), Phase 6 (full) | Complete |
 | DOC-04 | Phase 6 | Pending |

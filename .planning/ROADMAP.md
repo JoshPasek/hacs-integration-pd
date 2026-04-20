@@ -34,9 +34,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Repo scaffolding + HACS/HA metadata files
-- [ ] 01-02: Python package skeleton with empty async_setup_entry + const/manifest
-- [ ] 01-03: GitLab CI skeleton (lint + import test) + initial v0.1.0 tag
+- [x] 01-01-PLAN.md — HACS root metadata (hacs.json, info.md, LICENSE, .gitignore, stub README, card placeholder dir)
+- [ ] 01-02-PLAN.md — Python package skeleton (manifest.json, __init__.py, const.py, strings.json) + pyproject.toml + Wave-0 tests
+- [ ] 01-03-PLAN.md — GitLab CI skeleton (ruff + pytest + hassfest) + v0.1.0 semver tag
 
 ### Phase 2: Integration core
 **Goal**: A Home Assistant user can install the plugin, complete a config flow, and see live Party Dispenser state as real HA entities they can trigger services against — using HTTP polling for now.
@@ -129,7 +129,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & HACS scaffolding | 0/3 | Not started | - |
+| 1. Foundation & HACS scaffolding | 1/3 | In Progress | - |
 | 2. Integration core | 0/4 | Not started | - |
 | 3. Realtime push | 0/2 | Not started | - |
 | 4. Custom Lovelace card | 0/3 | Not started | - |
