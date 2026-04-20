@@ -1,10 +1,17 @@
-# Phase 1 CI skeleton — lint + import-smoke + hassfest manifest validation.
+# Phase 1 CI skeleton — lint + tests (including bespoke manifest validator).
 # Phase 5 will add: HACS action (against GitHub mirror) + full pytest-HA-custom suite.
+#
+# Note: the original plan called for a docker-based `hassfest` validate-stage job.
+# This runner (Kubernetes executor) does not permit DinD / privileged mode, and the
+# plan's scripted fallback (`python -m script.hassfest`) is not shippable — that
+# module lives in the home-assistant/core git repo, not in the PyPI package.
+# Bespoke `tests/test_integration_manifest.py` covers the same structural validation
+# (enum values, required fields, semver, URL shapes). Real hassfest + HACS action
+# are deferred to Phase 5 where they run against the GitHub mirror.
 
 stages:
   - lint
   - test
-  - validate
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -25,19 +32,8 @@ ruff:
     - ruff check .
     - ruff format --check .
 
-import-smoke:
+pytest:
   stage: test
   script:
     - pip install --quiet pytest
     - pytest tests/ -v
-
-hassfest:
-  stage: validate
-  image: docker:25-cli
-  services:
-    - docker:25-dind
-  variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
-  script:
-    - docker run --rm -v "$CI_PROJECT_DIR:/github/workspace" ghcr.io/home-assistant/hassfest
