@@ -36,5 +36,9 @@ ruff:
 pytest:
   stage: test
   script:
-    - pip install --quiet -e ".[dev]"
+    # editable_mode=compat makes setuptools add the repo to sys.path instead of
+    # installing an editable finder hook; HA's _get_custom_components iterates
+    # custom_components.__path__ and iterdir()'s each entry, which the finder-hook
+    # path fails with FileNotFoundError. "compat" mode avoids the hook entirely.
+    - pip install --quiet -e ".[dev]" --config-settings editable_mode=compat
     - pytest tests/ -v
