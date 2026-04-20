@@ -1,5 +1,6 @@
-# Phase 1 CI skeleton — lint + tests (including bespoke manifest validator).
-# Phase 5 will add: HACS action (against GitHub mirror) + full pytest-HA-custom suite.
+# Phase 2 CI — 2-stage pipeline: lint + test on python:3.13-slim with the full
+# pytest-homeassistant-custom-component harness installed via `.[dev]`.
+# Phase 5 will add: HACS action (against GitHub mirror) + real hassfest.
 #
 # Note: the original plan called for a docker-based `hassfest` validate-stage job.
 # This runner (Kubernetes executor) does not permit DinD / privileged mode, and the
@@ -19,7 +20,7 @@ variables:
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
 
 default:
-  image: python:3.12-slim
+  image: python:3.13-slim
   cache:
     key: pip-$CI_COMMIT_REF_SLUG
     paths:
@@ -35,5 +36,5 @@ ruff:
 pytest:
   stage: test
   script:
-    - pip install --quiet pytest
+    - pip install --quiet -e ".[dev]"
     - pytest tests/ -v

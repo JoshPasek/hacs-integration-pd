@@ -1,13 +1,26 @@
 [project]
 name = "party_dispenser"
-version = "0.1.0"
+version = "0.2.0"
 description = "Home Assistant integration and Lovelace card for the Party Dispenser backend."
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 readme = "README.md"
 license = { text = "MIT" }
 
+[project.optional-dependencies]
+dev = [
+  "pytest-homeassistant-custom-component==0.13.316",
+  "ruff==0.15.11",
+]
+
+[tool.setuptools.packages.find]
+# Restrict editable-install discovery to the integration package only; `www/` and
+# `tests/` are intentionally excluded (www is the Phase 4 card workspace, tests is
+# a test harness not a Python package).
+where = ["."]
+include = ["custom_components*"]
+
 [tool.ruff]
-target-version = "py312"
+target-version = "py313"
 line-length = 100
 extend-exclude = [
   "tests/fixtures",
