@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-01-PLAN.md (HACS root metadata)
-last_updated: "2026-04-20T17:16:49.825Z"
-last_activity: 2026-04-20 — Completed 01-01-PLAN.md (HACS root metadata + LICENSE + .gitignore + stub README + card placeholder)
+stopped_at: Completed 01-02-PLAN.md (Python package skeleton + pyproject.toml + Wave-0 tests)
+last_updated: "2026-04-20T17:25:15.045Z"
+last_activity: 2026-04-20
 progress:
   total_phases: 6
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
   percent: 33
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-04-20)
 ## Current Position
 
 Phase: 1 of 6 (Foundation & HACS scaffolding)
-Plan: 2 of 3 in current phase
+Plan: 3 of 3 in current phase
 Status: In progress
-Last activity: 2026-04-20 — Completed 01-01-PLAN.md (HACS root metadata + LICENSE + .gitignore + stub README + card placeholder)
+Last activity: 2026-04-20
 
 Progress: [███░░░░░░░] 33%
 
@@ -58,6 +58,7 @@ Progress: [███░░░░░░░] 33%
 - Trend: Baseline
 
 *Updated after each plan completion*
+| Phase 01-foundation-hacs-scaffolding P02 | 4 min | 3 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,9 @@ Recent decisions affecting current work:
 - [Phase 01]: 01-01: MIT LICENSE with 'Copyright (c) 2026 Party Dispenser contributors' (CONTEXT LOCKED)
 - [Phase 01]: 01-01: Card placeholder ships .gitkeep + README only — NO .js (HACS one-category-per-repo)
 - [Phase 01]: 01-01: Dropped misleading no-op .gitignore negation for card README.md
+- [Phase 01-foundation-hacs-scaffolding]: 01-02: Applied TYPE_CHECKING guard to HA imports in __init__.py (Rule 1 fix) — from __future__ import annotations only defers annotations, not module-scope imports; TYPE_CHECKING is canonical HA pattern satisfying 'import without HA installed' acceptance criterion
+- [Phase 01-foundation-hacs-scaffolding]: 01-02: pyproject.toml is single source of truth for ruff + pytest (no .ruff.toml, no pytest.ini) — Phase 2+ extends this file
+- [Phase 01-foundation-hacs-scaffolding]: 01-02: Deferred pytest-asyncio install — plan kept framework installs minimal; harmless PytestConfigWarning until 01-03/Phase 2
 
 ### Pending Todos
 
@@ -81,6 +85,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-20T17:16:42.210Z
-Stopped at: Completed 01-01-PLAN.md (HACS root metadata)
+Last session: 2026-04-20T17:25:15.042Z
+Stopped at: Completed 01-02-PLAN.md (Python package skeleton + pyproject.toml + Wave-0 tests)
 Resume file: None

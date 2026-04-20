@@ -35,7 +35,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — HACS root metadata (hacs.json, info.md, LICENSE, .gitignore, stub README, card placeholder dir)
-- [ ] 01-02-PLAN.md — Python package skeleton (manifest.json, __init__.py, const.py, strings.json) + pyproject.toml + Wave-0 tests
+- [x] 01-02-PLAN.md — Python package skeleton (manifest.json, __init__.py, const.py, strings.json) + pyproject.toml + Wave-0 tests
 - [ ] 01-03-PLAN.md — GitLab CI skeleton (ruff + pytest + hassfest) + v0.1.0 semver tag
 
 ### Phase 2: Integration core
@@ -129,7 +129,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & HACS scaffolding | 1/3 | In Progress | - |
+| 1. Foundation & HACS scaffolding | 2/3 | In Progress|  |
 | 2. Integration core | 0/4 | Not started | - |
 | 3. Realtime push | 0/2 | Not started | - |
 | 4. Custom Lovelace card | 0/3 | Not started | - |
