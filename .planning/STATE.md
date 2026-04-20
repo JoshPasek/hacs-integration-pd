@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase_2_in_progress
-stopped_at: Completed 02-03-PLAN.md (Phase 2 Wave 2 sensor platform — 5 SensorEntity subclasses + shared DeviceInfo; INT-01/02 done)
-last_updated: "2026-04-20T19:11:14.715Z"
+status: completed
+stopped_at: Completed 02-04-PLAN.md (Phase 2 Wave 3 — services.py + pytest suite; Phase 2 COMPLETE; v0.2.0 tag pushed)
+last_updated: "2026-04-20T19:26:30.801Z"
 last_activity: 2026-04-20
 progress:
   total_phases: 6
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 7
-  completed_plans: 6
+  completed_plans: 7
   percent: 86
 ---
 
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-20)
 
 **Core value:** One-click install and a live, push-driven dashboard card that controls the dispenser.
-**Current focus:** Phase 2 — Integration core (Wave 1 foundation landed)
+**Current focus:** Phase 2 COMPLETE (v0.2.0 tagged + pushed); Phase 3 (Realtime push) unblocked
 
 ## Current Position
 
-Phase: 2 of 6 (Integration core) — IN PROGRESS
-Plan: 3 of 4 in current phase complete (02-01 + 02-02 + 02-03 done; 02-04 pending — depends on all three)
-Status: Phase 2 Wave 2 sensor platform landed (sensor.py with 5 SensorEntity subclasses + shared DeviceInfo; INT-01/02 done)
+Phase: 2 of 6 (Integration core) — COMPLETE
+Plan: 4 of 4 in current phase complete (02-01 + 02-02 + 02-03 + 02-04 all done)
+Status: Phase 2 shipped — config flow + polling coordinator + 5 sensors + 3 services + 54 pytest-HA tests green; v0.2.0 annotated tag pushed to origin. Next: Phase 3 (Realtime push — WebSocket + binary_sensor.connected).
 Last activity: 2026-04-20
 
-Progress: [█████████░] 86% (6 of 7 plans complete across all phases)
+Progress: [██████████] 100% (7 of 7 plans complete across completed phases; Phase 3 planning next)
 
 ## Performance Metrics
 
@@ -63,6 +63,7 @@ Progress: [█████████░] 86% (6 of 7 plans complete across all
 | Phase 02-integration-core P02 | 7 min | 3 tasks | 10 files |
 | Phase 02-integration-core P01 | 2min | 1 tasks | 1 files |
 | Phase 02-integration-core P03 | 2min | 1 tasks | 1 files |
+| Phase 02-integration-core P04 | 7min | 3 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -93,6 +94,10 @@ Recent decisions affecting current work:
 - [Phase 02-integration-core]: 02-03: Removed research code's '# noqa: ARG001' suppression — ARG is not in the project's selected ruff rules, so it was a dead directive (RUF100). Pattern: before copying noqa comments from research, check pyproject.toml [tool.ruff.lint] select groups.
 - [Phase 02-integration-core]: 02-03: RecipesSensor attrs kept LIGHT ({id, name, makeable} only, no ingredients) per Open Question 2 — HA's 16KB state-attribute soft limit would be breached by 50+ recipes × 10+ ingredients. Full recipe data consumed by Phase 4 custom card directly from coordinator state.
 - [Phase 02-integration-core]: 02-03: MRO order 'class X(PartyDispenserEntity, SensorEntity)' — PartyDispenserEntity first ensures CoordinatorEntity's __init__ + shared DeviceInfo + _attr_has_entity_name inherit correctly; SensorEntity second layers state pipeline on top. Swapping the order would lose INT-01's single-device invariant.
+- [Phase 02-integration-core]: 02-04: Added [tool.setuptools.packages.find] include=custom_components* to pyproject.toml — setuptools flat-layout auto-discovery fails with multi-top-level www/ + custom_components/; explicit include scopes the editable install to the integration only
+- [Phase 02-integration-core]: 02-04: CI pytest job uses pip install -e .[dev] --config-settings editable_mode=compat — avoids setuptools PEP 660 editable finder-hook × HA _get_custom_components iterdir FileNotFoundError; compat mode writes classic .pth
+- [Phase 02-integration-core]: 02-04: Phase 2 complete with 54 tests passing (27 Phase-1 + 27 Phase-2 new) in <0.5s locally; coverage 89% overall, ≥80% on config_flow/api/coordinator/services; v0.2.0 annotated tag pushed to origin
+- [Phase 02-integration-core]: 02-04: aioclient_mock.mock_calls tuple indexing confirmed: call[0]=method, call[1]=url, call[2]=body/json, call[3]=headers — research's indexing worked first-try; no adaptation needed
 
 ### Pending Todos
 
@@ -104,6 +109,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-20T19:10:36.106Z
-Stopped at: Completed 02-03-PLAN.md (Phase 2 Wave 2 sensor platform — 5 SensorEntity subclasses + shared DeviceInfo; INT-01/02 done)
+Last session: 2026-04-20T19:26:19.253Z
+Stopped at: Completed 02-04-PLAN.md (Phase 2 Wave 3 — services.py + pytest suite; Phase 2 COMPLETE; v0.2.0 tag pushed)
 Resume file: None

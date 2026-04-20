@@ -21,9 +21,9 @@
 
 - [x] **INT-01**: One `device_registry` entry per config entry labeled "Party Dispenser"
 - [x] **INT-02**: Entities: `sensor.party_dispenser_queue_size`, `sensor.party_dispenser_queue_summary`, `sensor.party_dispenser_makeable_count`, `sensor.party_dispenser_current_order`, `sensor.party_dispenser_recipes`
-- [ ] **INT-03**: Service `party_dispenser.order_recipe(recipe_id: str)` places an order on the backend
-- [ ] **INT-04**: Service `party_dispenser.cancel_order(order_id: str)` cancels a queued order
-- [ ] **INT-05**: Service `party_dispenser.refresh()` forces a full state refresh
+- [x] **INT-03**: Service `party_dispenser.order_recipe(recipe_id: str)` places an order on the backend
+- [x] **INT-04**: Service `party_dispenser.cancel_order(order_id: str)` cancels a queued order
+- [x] **INT-05**: Service `party_dispenser.refresh()` forces a full state refresh
 
 ### Realtime Updates
 
@@ -99,9 +99,9 @@ Deferred to future releases — not in v1.0 scope.
 | CFG-03 | Phase 2 | Complete |
 | INT-01 | Phase 2 | Complete |
 | INT-02 | Phase 2 | Complete |
-| INT-03 | Phase 2 | Pending |
-| INT-04 | Phase 2 | Pending |
-| INT-05 | Phase 2 | Pending |
+| INT-03 | Phase 2 | Complete |
+| INT-04 | Phase 2 | Complete |
+| INT-05 | Phase 2 | Complete |
 | RT-01 | Phase 3 | Pending |
 | RT-02 | Phase 3 | Pending |
 | RT-03 | Phase 3 | Pending |
@@ -113,7 +113,7 @@ Deferred to future releases — not in v1.0 scope.
 | UI-05 | Phase 4 | Pending |
 | UI-06 | Phase 4 | Pending |
 | UI-07 | Phase 4 | Pending |
-| QA-01 | Phase 2 (partial: behaviors in 02-02, tests in 02-04) | In Progress |
+| QA-01 | Phase 2 | Complete |
 | QA-02 | Phase 3 | Pending |
 | QA-03 | Phase 4 | Pending |
 | QA-04 | Phase 1 (skeleton), Phase 5 (full) | Complete |

@@ -13,7 +13,7 @@ Ship a full HACS-installable Home Assistant plugin (Python integration + custom 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & HACS scaffolding** - Repo structure, HACS metadata, Python package skeleton, license, CI skeleton
-- [ ] **Phase 2: Integration core** - Config flow, polling coordinator, sensors, services, device registry
+- [x] **Phase 2: Integration core** - Config flow, polling coordinator, sensors, services, device registry
 - [ ] **Phase 3: Realtime push** - WebSocket subscription, reconnect/backoff, connection-status entity
 - [ ] **Phase 4: Custom Lovelace card** - lit-element card with recipe grid, queue, summary; wired to integration services
 - [ ] **Phase 5: CI + GitHub mirror + release automation** - GitLab CI pipeline, GitHub private-repo mirror, semver release tagging
@@ -54,7 +54,7 @@ Plans:
 - [x] 02-01-PLAN.md — Config flow (ConfigFlow + OptionsFlowHandler; CFG-01/02/03)
 - [x] 02-02-PLAN.md — Scaffolding + api.py + coordinator.py + entity.py + __init__.py extension (runtime_data pattern; QA-01 partial)
 - [x] 02-03-PLAN.md — Sensor platform (5 SensorEntity subclasses + device_registry via shared DeviceInfo; INT-01, INT-02)
-- [ ] 02-04-PLAN.md — Wave-0 CI scaffolding + services.py + full pytest suite (INT-03, INT-04, INT-05, QA-01 full)
+- [x] 02-04-PLAN.md — Wave-0 CI scaffolding + services.py + full pytest suite (INT-03, INT-04, INT-05, QA-01 full)
 
 ### Phase 3: Realtime push
 **Goal**: Order placements and queue changes propagate from backend → HA entities sub-second via the WebSocket broadcaster, with graceful fallback when the socket drops.
@@ -130,7 +130,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & HACS scaffolding | 3/3 | Complete | 2026-04-20 |
-| 2. Integration core | 3/4 | In Progress|  |
+| 2. Integration core | 4/4 | Complete | 2026-04-20 |
 | 3. Realtime push | 0/2 | Not started | - |
 | 4. Custom Lovelace card | 0/3 | Not started | - |
 | 5. CI + GitHub mirror + releases | 0/2 | Not started | - |
