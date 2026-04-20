@@ -16,16 +16,18 @@ from .const import (
     CONF_SCAN_INTERVAL,
     CONF_USE_TLS,
     DEFAULT_SCAN_INTERVAL,
+    WS_PATH,
 )
 from .coordinator import PartyDispenserCoordinator, PartyDispenserData
 from .services import async_setup_services
+from .websocket import PartyDispenserWebSocketClient
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
 
     from .coordinator import PartyDispenserConfigEntry
 
-PLATFORMS: list[Platform] = [Platform.SENSOR]
+PLATFORMS: list[Platform] = [Platform.SENSOR, Platform.BINARY_SENSOR]
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
@@ -54,9 +56,30 @@ async def async_setup_entry(
     scan_interval = entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL)
     coordinator = PartyDispenserCoordinator(hass, client, scan_interval=scan_interval)
 
-    entry.runtime_data = PartyDispenserData(client=client, coordinator=coordinator)
-
     await coordinator.async_config_entry_first_refresh()
+
+    # --- Phase 3: WebSocket client (RT-01, RT-02, RT-03, RT-04) ---
+    # Build WS URL (scheme ws/wss depends on use_tls; independent from http base_url above)
+    ws_scheme = "wss" if entry.data.get(CONF_USE_TLS, False) else "ws"
+    ws_url = f"{ws_scheme}://{host}:{port}{WS_PATH}"
+    ws_client = PartyDispenserWebSocketClient(
+        hass=hass,
+        url=ws_url,
+        coordinator=coordinator,
+        entry_id=entry.entry_id,
+    )
+
+    entry.runtime_data = PartyDispenserData(
+        client=client,
+        coordinator=coordinator,
+        ws_client=ws_client,
+    )
+
+    # Spawn WS background task BEFORE async_forward_entry_setups so the binary_sensor
+    # platform sees a valid ws_client on its runtime_data read. start() only registers
+    # the task; actual connect happens on the event loop thereafter.
+    ws_client.start(entry)
+    entry.async_on_unload(ws_client.stop)
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     entry.async_on_unload(entry.add_update_listener(_async_reload_entry))

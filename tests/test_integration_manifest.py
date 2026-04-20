@@ -174,18 +174,18 @@ def test_manifest_dependencies_is_list_of_strings() -> None:
             assert isinstance(dep, str), f"dependencies entries must be strings, got {dep!r}"
 
 
-def test_manifest_phase2_overrides() -> None:
-    """Phase 2 locked decisions per 02-CONTEXT.md (config_flow flipped, version bumped)."""
+def test_manifest_phase3_overrides() -> None:
+    """Phase 3 locked decisions per 03-CONTEXT.md (WS push landed, version bumped)."""
     manifest = _load()
-    assert manifest.get("iot_class") == "local_polling", (
-        "Phase 2: iot_class stays 'local_polling' (Phase 3 flips to 'local_push' when WS lands)"
+    assert manifest.get("iot_class") == "local_push", (
+        "Phase 3: iot_class flipped to 'local_push' when WebSocket subscription landed"
     )
     assert manifest.get("integration_type") == "hub", (
-        "Phase 2: integration_type stays 'hub' (forward-compat for multi-dispenser v2)"
+        "Phase 3: integration_type stays 'hub' (forward-compat for multi-dispenser v2)"
     )
     assert manifest.get("config_flow") is True, (
-        "Phase 2: config_flow MUST be true (Phase 1 stub was false; Phase 2 flips)"
+        "Phase 3: config_flow stays true (Phase 2 flipped it; we don't touch it)"
     )
-    assert manifest.get("version") == "0.2.0", (
-        "Phase 2: version bumped to 0.2.0 per CONTEXT.md locked decision"
+    assert manifest.get("version") == "0.3.0", (
+        "Phase 3: version bumped to 0.3.0 per CONTEXT.md locked decision"
     )

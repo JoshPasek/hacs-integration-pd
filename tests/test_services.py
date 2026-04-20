@@ -49,9 +49,11 @@ async def _install_fake_entry(hass):
     fake_client = AsyncMock()
     fake_coordinator = MagicMock()
     fake_coordinator.async_request_refresh = AsyncMock()
+    fake_ws_client = MagicMock()  # Phase 3: services never touch ws_client, MagicMock suffices
     entry.runtime_data = PartyDispenserData(
         client=fake_client,
         coordinator=fake_coordinator,
+        ws_client=fake_ws_client,
     )
     return entry, fake_client, fake_coordinator
 
