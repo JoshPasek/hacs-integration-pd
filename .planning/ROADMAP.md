@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & HACS scaffolding** - Repo structure, HACS metadata, Python package skeleton, license, CI skeleton
 - [x] **Phase 2: Integration core** - Config flow, polling coordinator, sensors, services, device registry
-- [ ] **Phase 3: Realtime push** - WebSocket subscription, reconnect/backoff, connection-status entity
+- [x] **Phase 3: Realtime push** - WebSocket subscription, reconnect/backoff, connection-status entity (completed 2026-04-20)
 - [ ] **Phase 4: Custom Lovelace card** - lit-element card with recipe grid, queue, summary; wired to integration services
 - [ ] **Phase 5: CI + GitHub mirror + release automation** - GitLab CI pipeline, GitHub private-repo mirror, semver release tagging
 - [ ] **Phase 6: Docs + migration + polish** - README, install instructions, YAML-package migration guide, screenshots, mobile layout pass
@@ -70,7 +70,7 @@ Plans:
 
 Plans:
 - [x] 03-01-PLAN.md — WebSocket client + binary_sensor platform + __init__.py wiring + manifest/test atomic flip + version 0.3.0 (RT-01, RT-02, RT-03, RT-04)
-- [ ] 03-02-PLAN.md — tests/test_websocket.py (4 tests) + tests/test_binary_sensor.py (2 tests) + coverage gate + annotated v0.3.0 tag (QA-02)
+- [x] 03-02-PLAN.md — tests/test_websocket.py (4 tests) + tests/test_binary_sensor.py (2 tests) + coverage gate + annotated v0.3.0 tag (QA-02)
 
 ### Phase 4: Custom Lovelace card
 **Goal**: A user adds a single `type: custom:party-dispenser-card` card to their dashboard and sees a polished recipe grid + live queue + summary; tapping a recipe places an order and tapping a queue item cancels it — all via the integration's services.
@@ -131,7 +131,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation & HACS scaffolding | 3/3 | Complete | 2026-04-20 |
 | 2. Integration core | 4/4 | Complete | 2026-04-20 |
-| 3. Realtime push | 1/2 | In Progress | - |
+| 3. Realtime push | 2/2 | Complete   | 2026-04-20 |
 | 4. Custom Lovelace card | 0/3 | Not started | - |
 | 5. CI + GitHub mirror + releases | 0/2 | Not started | - |
 | 6. Docs + migration + polish | 0/2 | Not started | - |

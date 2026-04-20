@@ -27,10 +27,10 @@
 
 ### Realtime Updates
 
-- [x] **RT-01**: Integration subscribes to backend WebSocket broadcaster on setup _(Phase 3 Plan 1 — wiring landed in __init__.py::async_setup_entry; behavior assertion in Plan 03-02)_
-- [x] **RT-02**: Queue/order events update HA entities within 1 second of backend broadcast _(Phase 3 Plan 1 — queue_updated event -> coordinator.async_request_refresh() handler landed; latency assertion in Plan 03-02)_
-- [x] **RT-03**: `binary_sensor.party_dispenser_connected` reflects WebSocket connection state _(Phase 3 Plan 1 — binary_sensor.py + dispatcher subscribe landed; behavior test in Plan 03-02)_
-- [x] **RT-04**: On disconnect, the integration reconnects with exponential backoff (0.5s→30s cap) and falls back to polling until reconnected _(Phase 3 Plan 1 — reconnect loop w/ additive jitter + polling unchanged; backoff-sequence test in Plan 03-02)_
+- [x] **RT-01**: Integration subscribes to backend WebSocket broadcaster on setup _(Phase 3 — wiring in __init__.py::async_setup_entry landed in 03-01; behavior assertion in tests/test_websocket.py landed in 03-02)_
+- [x] **RT-02**: Queue/order events update HA entities within 1 second of backend broadcast _(Phase 3 — queue_updated event -> coordinator.async_request_refresh() handler landed in 03-01; refresh-on-event test in 03-02)_
+- [x] **RT-03**: `binary_sensor.party_dispenser_connected` reflects WebSocket connection state _(Phase 3 — binary_sensor.py + dispatcher subscribe landed in 03-01; dispatcher source + receiver tests in 03-02)_
+- [x] **RT-04**: On disconnect, the integration reconnects with exponential backoff (0.5s→30s cap) and falls back to polling until reconnected _(Phase 3 — reconnect loop w/ additive jitter + polling unchanged landed in 03-01; backoff-sequence (0.5/1.0/2.0 + ≤25% jitter) test in 03-02)_
 
 ### Custom Lovelace Card
 
@@ -45,7 +45,7 @@
 ### Testing & Quality
 
 - [x] **QA-01**: `pytest-homeassistant-custom-component` tests cover config flow (happy + sad paths), each service, coordinator state machine _(Phase 2 partial — behaviors coded in 02-02; pytest-HA suite lands in 02-04)_
-- [ ] **QA-02**: WebSocket reconnect logic has dedicated tests (drop simulation, backoff assertions)
+- [x] **QA-02**: WebSocket reconnect logic has dedicated tests (drop simulation, backoff assertions)
 - [ ] **QA-03**: Card has unit tests covering render + service-call invocation (using `@web/test-runner` or similar)
 - [x] **QA-04**: CI pipeline runs lint + all tests on every push; blocks merge on failure
 
@@ -102,10 +102,10 @@ Deferred to future releases — not in v1.0 scope.
 | INT-03 | Phase 2 | Complete |
 | INT-04 | Phase 2 | Complete |
 | INT-05 | Phase 2 | Complete |
-| RT-01 | Phase 3 | Phase 3 (partial) — wiring complete in 03-01; assertions in 03-02 |
-| RT-02 | Phase 3 | Phase 3 (partial) — handler complete in 03-01; latency test in 03-02 |
-| RT-03 | Phase 3 | Phase 3 (partial) — entity complete in 03-01; behavior test in 03-02 |
-| RT-04 | Phase 3 | Phase 3 (partial) — reconnect complete in 03-01; backoff test in 03-02 |
+| RT-01 | Phase 3 | Complete |
+| RT-02 | Phase 3 | Complete |
+| RT-03 | Phase 3 | Complete |
+| RT-04 | Phase 3 | Complete |
 | UI-01 | Phase 4 | Pending |
 | UI-02 | Phase 4 | Pending |
 | UI-03 | Phase 4 | Pending |
@@ -114,7 +114,7 @@ Deferred to future releases — not in v1.0 scope.
 | UI-06 | Phase 4 | Pending |
 | UI-07 | Phase 4 | Pending |
 | QA-01 | Phase 2 | Complete |
-| QA-02 | Phase 3 | Pending |
+| QA-02 | Phase 3 | Complete |
 | QA-03 | Phase 4 | Pending |
 | QA-04 | Phase 1 (skeleton), Phase 5 (full) | Complete |
 | REL-01 | Phase 1 | Complete |

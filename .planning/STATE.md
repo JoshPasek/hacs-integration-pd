@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: "Phase 3 Plan 1 landed — websocket.py (PartyDispenserWebSocketClient w/ reconnect + dispatcher) + binary_sensor.py (CONNECTIVITY entity) + __init__.py wired + manifest/test atomic flip to iot_class=local_push/version=0.3.0; 54/54 tests green. Next: Plan 03-02 (pytest-HA WS/binary_sensor coverage + v0.3.0 tag)."
-stopped_at: Completed 03-01-PLAN.md (Phase 3 Wave 1 — websocket.py + binary_sensor.py + manifest flip 0.3.0/local_push)
-last_updated: "2026-04-20T20:48:09.354Z"
+status: "Phase 3 COMPLETE — tests/test_websocket.py (4 tests) + tests/test_binary_sensor.py (2 tests) landed; 60/60 tests green, 88% coverage on websocket.py (QA-02 gate cleared); v0.3.0 annotated tag pushed to origin. Next: Phase 4 (custom Lovelace card)."
+stopped_at: Completed 03-02-PLAN.md — Phase 3 COMPLETE (WS + binary_sensor tests + v0.3.0 tag pushed to origin)
+last_updated: "2026-04-20T20:59:28.846Z"
 last_activity: 2026-04-20
 progress:
   total_phases: 6
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 9
-  completed_plans: 8
-  percent: 89
+  completed_plans: 9
+  percent: 50
 ---
 
 # Project State
@@ -21,50 +21,53 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-20)
 
 **Core value:** One-click install and a live, push-driven dashboard card that controls the dispenser.
-**Current focus:** Phase 3 Plan 1 LANDED (WebSocket client + binary_sensor + 0.3.0 manifest flip). Next: Plan 03-02 — test_websocket.py + test_binary_sensor.py + annotated v0.3.0 tag.
+**Current focus:** Phase 3 COMPLETE (WebSocket tests + binary_sensor tests + v0.3.0 tag pushed). Next: Phase 4 — custom Lovelace card (lit-element recipe grid + queue + summary, wired to integration services).
 
 ## Current Position
 
-Phase: 3 of 6 (Realtime push) — IN PROGRESS
-Plan: 1 of 2 in current phase complete (03-01 done; 03-02 next)
-Status: Phase 3 Plan 1 landed — websocket.py (PartyDispenserWebSocketClient w/ reconnect + dispatcher) + binary_sensor.py (CONNECTIVITY entity) + __init__.py wired + manifest/test atomic flip to iot_class=local_push/version=0.3.0; 54/54 tests green.
+Phase: 3 of 6 (Realtime push) — COMPLETE
+Plan: 2 of 2 in current phase complete (03-01 + 03-02 both landed)
+Status: Phase 3 COMPLETE — 60/60 tests green, 88% coverage on websocket.py (QA-02 gate cleared); annotated v0.3.0 tag pushed to origin at HEAD=28f0910.
 Last activity: 2026-04-20
 
-Progress: [█████████░] 89% (8 of 9 plans complete across phases 1-3; 03-02 is the next plan)
+Progress: [█████░░░░░] 50% (3 of 6 phases complete; 9 of 9 plans landed across phases 1-3; Phase 4 has plans not yet drafted)
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 1
-- Average duration: ~3 min
-- Total execution time: 0.05 hours
+- Total plans completed: 9 (3 Phase 1 + 4 Phase 2 + 2 Phase 3)
+- Average duration: ~5 min
+- Total execution time: ~0.75 hours
 
 **By Phase:**
 
 | Phase | Plans | Total    | Avg/Plan |
 |-------|-------|----------|----------|
-| 1     | 1/3   | ~3 min   | ~3 min   |
+| 1     | 3/3   | ~24 min  | ~8 min   |
+| 2     | 4/4   | ~18 min  | ~4.5 min |
+| 3     | 2/2   | ~11 min  | ~5.5 min |
 
 **Per-Plan Metrics:**
 
-| Plan          | Duration | Tasks   | Files   |
-|---------------|----------|---------|---------|
-| Phase 01 P01  | 3min     | 3 tasks | 7 files |
+| Plan                                    | Duration | Tasks   | Files    |
+|-----------------------------------------|----------|---------|----------|
+| Phase 01-foundation-hacs-scaffolding P01 | 3 min    | 3 tasks | 7 files  |
+| Phase 01-foundation-hacs-scaffolding P02 | 4 min    | 3 tasks | 10 files |
+| Phase 01-foundation-hacs-scaffolding P03 | 17 min   | 3 tasks | 7 files  |
+| Phase 02-integration-core P01           | 2 min    | 1 task  | 1 file   |
+| Phase 02-integration-core P02           | 7 min    | 3 tasks | 10 files |
+| Phase 02-integration-core P03           | 2 min    | 1 task  | 1 file   |
+| Phase 02-integration-core P04           | 7 min    | 3 tasks | 11 files |
+| Phase 03-realtime-push P01              | 6 min    | 3 tasks | 10 files |
+| Phase 03-realtime-push P02              | 5 min    | 3 tasks | 2 files  |
 
 **Recent Trend:**
 
-- Last 5 plans: ~3 min
-- Trend: Baseline
+- Last 5 plans: ~5.5 min avg
+- Trend: Stable (tight plans = shorter executions; Phase 3 P02 was fast despite requiring a Rule 1 fix on a tricky `asyncio.sleep` patch)
 
 *Updated after each plan completion*
-| Phase 01-foundation-hacs-scaffolding P02 | 4 min | 3 tasks | 10 files |
-| Phase 01-foundation-hacs-scaffolding P03 | 17 min | 3 tasks | 7 files |
-| Phase 02-integration-core P02 | 7 min | 3 tasks | 10 files |
-| Phase 02-integration-core P01 | 2min | 1 tasks | 1 files |
-| Phase 02-integration-core P03 | 2min | 1 tasks | 1 files |
-| Phase 02-integration-core P04 | 7min | 3 tasks | 11 files |
-| Phase 03-realtime-push P01 | 6min | 3 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -105,6 +108,10 @@ Recent decisions affecting current work:
 - [Phase 03-realtime-push]: 03-01: Folded dataclass-migration test fixes into Task 3 atomic commit (+2 extra files beyond plan's stated 4) — same class of CI-green invariant as Pitfall 8's manifest-flip atomicity; separate commit would leave HEAD..HEAD~1 red
 - [Phase 03-realtime-push]: 03-01: TYPE_CHECKING-guarded forward reference in PartyDispenserData.ws_client avoids circular import (coordinator <-> websocket) via from __future__ import annotations deferring annotations at runtime
 - [Phase 03-realtime-push]: 03-01: Phase 2 lesson confirmed — always check pyproject.toml [tool.ruff.lint] select BEFORE pasting noqa comments from research; research code repeatedly carries directives for unselected rules
+- [Phase 03-realtime-push]: 03-02: Saved _real_sleep = asyncio.sleep before test patches asyncio.sleep — Python's patch('mod.asyncio.sleep') mutates the single asyncio module, so naive pump-the-event-loop calls in outer test code get recorded; fix is indirection through _real_sleep reference (Rule 1 bug in research code)
+- [Phase 03-realtime-push]: 03-02: Coverage on websocket.py landed at 88.31% — skipped the research's optional extras (test_backoff_doubles_then_caps_at_30s + test_malformed_json_doesnt_disconnect) since the 80% QA-02 gate was already cleared; uncovered lines are idempotent-guard + fault-injection branches (production path 100% covered)
+- [Phase 03-realtime-push]: 03-02: v0.3.0 annotated tag (bb753fd) pushed to origin at HEAD=28f0910 with structured release-notes message mirroring v0.2.0 shape (What's included / Requirements closed / Research overrides / Deferred / Commits = git log --oneline v0.2.0..HEAD)
+- [Phase 03-realtime-push]: 03-02: Phase 3 COMPLETE — 60/60 tests green, 88% coverage on websocket.py, v0.3.0 pushed, all version-of-record files aligned
 
 ### Pending Todos
 
@@ -116,6 +123,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-20T20:47:53.164Z
-Stopped at: Completed 03-01-PLAN.md (Phase 3 Wave 1 — websocket.py + binary_sensor.py + manifest flip 0.3.0/local_push)
+Last session: 2026-04-20T20:59:28.843Z
+Stopped at: Completed 03-02-PLAN.md — Phase 3 COMPLETE (WS + binary_sensor tests + v0.3.0 tag pushed to origin)
 Resume file: None
