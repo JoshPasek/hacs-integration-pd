@@ -51,7 +51,7 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Config flow (ConfigFlow + OptionsFlowHandler; CFG-01/02/03)
+- [x] 02-01-PLAN.md — Config flow (ConfigFlow + OptionsFlowHandler; CFG-01/02/03)
 - [x] 02-02-PLAN.md — Scaffolding + api.py + coordinator.py + entity.py + __init__.py extension (runtime_data pattern; QA-01 partial)
 - [ ] 02-03-PLAN.md — Sensor platform (5 SensorEntity subclasses + device_registry via shared DeviceInfo; INT-01, INT-02)
 - [ ] 02-04-PLAN.md — Wave-0 CI scaffolding + services.py + full pytest suite (INT-03, INT-04, INT-05, QA-01 full)

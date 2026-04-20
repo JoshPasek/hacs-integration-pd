@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: phase_2_in_progress
-stopped_at: Completed 02-02-PLAN.md (Phase 2 Wave 1 foundation — api.py/coordinator.py/entity.py/runtime_data wiring + manifest flip + translations/en.json)
-last_updated: "2026-04-20T18:56:02.326Z"
+stopped_at: Completed 02-01-PLAN.md (Phase 2 Wave 2 config flow — PartyDispenserConfigFlow + OptionsFlowHandler 2025.12+ pattern; CFG-01/02/03 done)
+last_updated: "2026-04-20T19:04:19.124Z"
 last_activity: 2026-04-20
 progress:
   total_phases: 6
   completed_phases: 1
   total_plans: 7
-  completed_plans: 4
-  percent: 57
+  completed_plans: 5
+  percent: 71
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-04-20)
 ## Current Position
 
 Phase: 2 of 6 (Integration core) — IN PROGRESS
-Plan: 1 of 4 in current phase complete (02-02 done; 02-01, 02-03, 02-04 pending — 02-01 + 02-03 can run in parallel, 02-04 depends on all three)
-Status: Phase 2 Wave 1 landed (api.py + coordinator.py + entity.py + manifest flip + translations/en.json + __init__.py scaffold)
+Plan: 2 of 4 in current phase complete (02-02 + 02-01 done; 02-03, 02-04 pending — 02-03 independent of 02-01, 02-04 depends on all three)
+Status: Phase 2 Wave 2 config flow landed (config_flow.py with PartyDispenserConfigFlow + OptionsFlowHandler 2025.12+ pattern)
 Last activity: 2026-04-20
 
-Progress: [██████░░░░] 57% (4 of 7 plans complete across all phases)
+Progress: [███████░░░] 71% (5 of 7 plans complete across all phases)
 
 ## Performance Metrics
 
@@ -61,6 +61,7 @@ Progress: [██████░░░░] 57% (4 of 7 plans complete across all
 | Phase 01-foundation-hacs-scaffolding P02 | 4 min | 3 tasks | 10 files |
 | Phase 01-foundation-hacs-scaffolding P03 | 17 min | 3 tasks | 7 files |
 | Phase 02-integration-core P02 | 7 min | 3 tasks | 10 files |
+| Phase 02-integration-core P01 | 2min | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -85,6 +86,9 @@ Recent decisions affecting current work:
 - [Phase 02-integration-core]: 02-02: Forward reference to services.py in __init__.py::async_setup is deliberate — resolved by 02-04 Task 2. CI stage 1 (no HA) unaffected because ruff + AST-based tests never trigger package import; stage 2 (once 02-04 adds HA) will execute real import by which time services.py exists
 - [Phase 02-integration-core]: 02-02: Added .venv/ + venv/ to .gitignore — host is PEP 668 externally-managed Python; ruff/pytest require venv for local runs
 - [Phase 02-integration-core]: 02-02: entry.runtime_data = PartyDispenserData(client, coordinator) pattern adopted — NO hass.data[DOMAIN]. Bronze quality-scale rule honored; services.py (02-04) will look up coordinator via entry.runtime_data.coordinator
+- [Phase 02-integration-core]: 02-01: Added hass:HomeAssistant type annotation to _validate_connection via TYPE_CHECKING — research code omitted it; explicit typing matches 02-02 pattern and future-proofs against mypy strict modes
+- [Phase 02-integration-core]: 02-01: JWT rotation + TLS toggle in entry.data (not options) — __init__.py reads them at setup time; only scan_interval lives in entry.options. HA update listener fires reload on jwt/TLS data mutation via async_update_entry
+- [Phase 02-integration-core]: 02-01: OptionsFlowHandler has NO __init__ method — parent OptionsFlow provides self.config_entry via property (2025.12+ hard requirement); async_get_options_flow returns OptionsFlowHandler() with NO args
 
 ### Pending Todos
 
@@ -96,6 +100,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-20T18:56:02.323Z
-Stopped at: Completed 02-02-PLAN.md (Phase 2 Wave 1 foundation — api.py/coordinator.py/entity.py/runtime_data wiring + manifest flip + translations/en.json)
+Last session: 2026-04-20T19:04:03.706Z
+Stopped at: Completed 02-01-PLAN.md (Phase 2 Wave 2 config flow — PartyDispenserConfigFlow + OptionsFlowHandler 2025.12+ pattern; CFG-01/02/03 done)
 Resume file: None

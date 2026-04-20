@@ -13,9 +13,9 @@
 
 ### Installation & Configuration
 
-- [ ] **CFG-01**: Config flow asks for host, port, JWT, TLS mode; validates connectivity before saving
-- [ ] **CFG-02**: Options flow lets user rotate the JWT without re-adding the integration
-- [ ] **CFG-03**: No YAML edits required for normal setup — everything is via UI
+- [x] **CFG-01**: Config flow asks for host, port, JWT, TLS mode; validates connectivity before saving
+- [x] **CFG-02**: Options flow lets user rotate the JWT without re-adding the integration
+- [x] **CFG-03**: No YAML edits required for normal setup — everything is via UI
 
 ### Integration Core (Entities & Services)
 
@@ -94,9 +94,9 @@ Deferred to future releases — not in v1.0 scope.
 | HACS-01 | Phase 1 | Complete |
 | HACS-02 | Phase 5 | Pending |
 | HACS-03 | Phase 4 | Pending |
-| CFG-01 | Phase 2 | Pending |
-| CFG-02 | Phase 2 | Pending |
-| CFG-03 | Phase 2 | Pending |
+| CFG-01 | Phase 2 | Complete |
+| CFG-02 | Phase 2 | Complete |
+| CFG-03 | Phase 2 | Complete |
 | INT-01 | Phase 2 | Pending |
 | INT-02 | Phase 2 | Pending |
 | INT-03 | Phase 2 | Pending |
