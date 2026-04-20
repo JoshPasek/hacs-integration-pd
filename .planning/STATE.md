@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 01-02-PLAN.md (Python package skeleton + pyproject.toml + Wave-0 tests)
-last_updated: "2026-04-20T17:25:15.045Z"
+status: phase_1_complete
+stopped_at: Completed 01-03-PLAN.md — Phase 1 complete (GitLab CI green, v0.1.0 tagged)
+last_updated: "2026-04-20T17:49:25.393Z"
 last_activity: 2026-04-20
 progress:
   total_phases: 6
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
   percent: 33
 ---
 
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-04-20)
 
 ## Current Position
 
-Phase: 1 of 6 (Foundation & HACS scaffolding)
-Plan: 3 of 3 in current phase
-Status: In progress
+Phase: 1 of 6 (Foundation & HACS scaffolding) — COMPLETE, ready for Phase 2
+Plan: 3 of 3 in current phase (all complete)
+Status: Phase 1 complete; ready for verify-work / plan-phase 2
 Last activity: 2026-04-20
 
-Progress: [███░░░░░░░] 33%
+Progress: [██░░░░░░░░] 17% (1 of 6 phases complete)
 
 ## Performance Metrics
 
@@ -59,6 +59,7 @@ Progress: [███░░░░░░░] 33%
 
 *Updated after each plan completion*
 | Phase 01-foundation-hacs-scaffolding P02 | 4 min | 3 tasks | 10 files |
+| Phase 01-foundation-hacs-scaffolding P03 | 17 min | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,10 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-hacs-scaffolding]: 01-02: Applied TYPE_CHECKING guard to HA imports in __init__.py (Rule 1 fix) — from __future__ import annotations only defers annotations, not module-scope imports; TYPE_CHECKING is canonical HA pattern satisfying 'import without HA installed' acceptance criterion
 - [Phase 01-foundation-hacs-scaffolding]: 01-02: pyproject.toml is single source of truth for ruff + pytest (no .ruff.toml, no pytest.ini) — Phase 2+ extends this file
 - [Phase 01-foundation-hacs-scaffolding]: 01-02: Deferred pytest-asyncio install — plan kept framework installs minimal; harmless PytestConfigWarning until 01-03/Phase 2
+- [Phase 01-foundation-hacs-scaffolding]: 01-03: Replaced docker-hassfest validate job with bespoke tests/test_integration_manifest.py (16 tests) — Kubernetes runner disallows DinD and plan's scripted fallback (python -m script.hassfest) is not shippable (module lives only in home-assistant/core git, not PyPI). Real hassfest + HACS action deferred to Phase 5 against GitHub mirror.
+- [Phase 01-foundation-hacs-scaffolding]: 01-03: Annotated semver tag v0.1.0 at commit 593f780 (remote SHA 8ca047b) — structured multi-section release message (What's included / Deviations / Deferred) so the tag body reads as a release note.
+- [Phase 01-foundation-hacs-scaffolding]: 01-03: Phase 2+ plans should add 'ruff format .' as an explicit action step BEFORE commits; CI's 'ruff format --check' fails on any file not canonically formatted locally (Deviation 1 in plan 01-03).
+- [Phase 01-foundation-hacs-scaffolding]: 01-03: Phase 5 planners MUST NOT assume DinD availability on self-hosted GitLab runners without explicit confirmation. This project's Kubernetes runner has privileged=false. Phase 5 should run hassfest + HACS action on GitHub Actions against the GitHub mirror (native DinD), not on GitLab.
 
 ### Pending Todos
 
@@ -85,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-20T17:25:15.042Z
-Stopped at: Completed 01-02-PLAN.md (Python package skeleton + pyproject.toml + Wave-0 tests)
+Last session: 2026-04-20T17:48:31.027Z
+Stopped at: Completed 01-03-PLAN.md — Phase 1 complete (GitLab CI green, v0.1.0 tagged)
 Resume file: None

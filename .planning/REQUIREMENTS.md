@@ -47,7 +47,7 @@
 - [ ] **QA-01**: `pytest-homeassistant-custom-component` tests cover config flow (happy + sad paths), each service, coordinator state machine
 - [ ] **QA-02**: WebSocket reconnect logic has dedicated tests (drop simulation, backoff assertions)
 - [ ] **QA-03**: Card has unit tests covering render + service-call invocation (using `@web/test-runner` or similar)
-- [ ] **QA-04**: CI pipeline runs lint + all tests on every push; blocks merge on failure
+- [x] **QA-04**: CI pipeline runs lint + all tests on every push; blocks merge on failure
 
 ### Distribution & Release
 
@@ -116,7 +116,7 @@ Deferred to future releases — not in v1.0 scope.
 | QA-01 | Phase 2 | Pending |
 | QA-02 | Phase 3 | Pending |
 | QA-03 | Phase 4 | Pending |
-| QA-04 | Phase 1 (skeleton), Phase 5 (full) | Pending |
+| QA-04 | Phase 1 (skeleton), Phase 5 (full) | Complete |
 | REL-01 | Phase 1 | Complete |
 | REL-02 | Phase 5 | Pending |
 | REL-03 | Phase 5 | Pending |

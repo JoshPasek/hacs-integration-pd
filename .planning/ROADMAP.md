@@ -12,7 +12,7 @@ Ship a full HACS-installable Home Assistant plugin (Python integration + custom 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation & HACS scaffolding** - Repo structure, HACS metadata, Python package skeleton, license, CI skeleton
+- [x] **Phase 1: Foundation & HACS scaffolding** - Repo structure, HACS metadata, Python package skeleton, license, CI skeleton
 - [ ] **Phase 2: Integration core** - Config flow, polling coordinator, sensors, services, device registry
 - [ ] **Phase 3: Realtime push** - WebSocket subscription, reconnect/backoff, connection-status entity
 - [ ] **Phase 4: Custom Lovelace card** - lit-element card with recipe grid, queue, summary; wired to integration services
@@ -36,7 +36,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md — HACS root metadata (hacs.json, info.md, LICENSE, .gitignore, stub README, card placeholder dir)
 - [x] 01-02-PLAN.md — Python package skeleton (manifest.json, __init__.py, const.py, strings.json) + pyproject.toml + Wave-0 tests
-- [ ] 01-03-PLAN.md — GitLab CI skeleton (ruff + pytest + hassfest) + v0.1.0 semver tag
+- [x] 01-03-PLAN.md — GitLab CI skeleton (ruff + pytest + hassfest) + v0.1.0 semver tag
 
 ### Phase 2: Integration core
 **Goal**: A Home Assistant user can install the plugin, complete a config flow, and see live Party Dispenser state as real HA entities they can trigger services against — using HTTP polling for now.
@@ -129,7 +129,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & HACS scaffolding | 2/3 | In Progress|  |
+| 1. Foundation & HACS scaffolding | 3/3 | Complete | 2026-04-20 |
 | 2. Integration core | 0/4 | Not started | - |
 | 3. Realtime push | 0/2 | Not started | - |
 | 4. Custom Lovelace card | 0/3 | Not started | - |
