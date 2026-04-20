@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase_1_complete
-stopped_at: Completed 01-03-PLAN.md — Phase 1 complete (GitLab CI green, v0.1.0 tagged)
-last_updated: "2026-04-20T17:49:25.393Z"
+status: phase_2_in_progress
+stopped_at: Completed 02-02-PLAN.md (Phase 2 Wave 1 foundation — api.py/coordinator.py/entity.py/runtime_data wiring + manifest flip + translations/en.json)
+last_updated: "2026-04-20T18:56:02.326Z"
 last_activity: 2026-04-20
 progress:
   total_phases: 6
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
-  percent: 33
+  total_plans: 7
+  completed_plans: 4
+  percent: 57
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-20)
 
 **Core value:** One-click install and a live, push-driven dashboard card that controls the dispenser.
-**Current focus:** Phase 1 — Foundation & HACS scaffolding
+**Current focus:** Phase 2 — Integration core (Wave 1 foundation landed)
 
 ## Current Position
 
-Phase: 1 of 6 (Foundation & HACS scaffolding) — COMPLETE, ready for Phase 2
-Plan: 3 of 3 in current phase (all complete)
-Status: Phase 1 complete; ready for verify-work / plan-phase 2
+Phase: 2 of 6 (Integration core) — IN PROGRESS
+Plan: 1 of 4 in current phase complete (02-02 done; 02-01, 02-03, 02-04 pending — 02-01 + 02-03 can run in parallel, 02-04 depends on all three)
+Status: Phase 2 Wave 1 landed (api.py + coordinator.py + entity.py + manifest flip + translations/en.json + __init__.py scaffold)
 Last activity: 2026-04-20
 
-Progress: [██░░░░░░░░] 17% (1 of 6 phases complete)
+Progress: [██████░░░░] 57% (4 of 7 plans complete across all phases)
 
 ## Performance Metrics
 
@@ -60,6 +60,7 @@ Progress: [██░░░░░░░░] 17% (1 of 6 phases complete)
 *Updated after each plan completion*
 | Phase 01-foundation-hacs-scaffolding P02 | 4 min | 3 tasks | 10 files |
 | Phase 01-foundation-hacs-scaffolding P03 | 17 min | 3 tasks | 7 files |
+| Phase 02-integration-core P02 | 7 min | 3 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -79,6 +80,11 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-hacs-scaffolding]: 01-03: Annotated semver tag v0.1.0 at commit 593f780 (remote SHA 8ca047b) — structured multi-section release message (What's included / Deviations / Deferred) so the tag body reads as a release note.
 - [Phase 01-foundation-hacs-scaffolding]: 01-03: Phase 2+ plans should add 'ruff format .' as an explicit action step BEFORE commits; CI's 'ruff format --check' fails on any file not canonically formatted locally (Deviation 1 in plan 01-03).
 - [Phase 01-foundation-hacs-scaffolding]: 01-03: Phase 5 planners MUST NOT assume DinD availability on self-hosted GitLab runners without explicit confirmation. This project's Kubernetes runner has privileged=false. Phase 5 should run hassfest + HACS action on GitHub Actions against the GitHub mirror (native DinD), not on GitLab.
+- [Phase 02-integration-core]: 02-02: Adopted ruff UP041 fix (asyncio.TimeoutError → builtin TimeoutError) and UP017 (timezone.utc → datetime.UTC alias) — Python 3.11+ aliases; research's copy-ready code had latent ruff findings, fixed in place
+- [Phase 02-integration-core]: 02-02: Rewrote tests/test_import.py to AST-parse __init__.py + use importlib.util.spec_from_file_location for const.py — Phase 2's runtime HA imports broke Phase 1's 'import without HA' smoke test; CI stage 1 stays green
+- [Phase 02-integration-core]: 02-02: Forward reference to services.py in __init__.py::async_setup is deliberate — resolved by 02-04 Task 2. CI stage 1 (no HA) unaffected because ruff + AST-based tests never trigger package import; stage 2 (once 02-04 adds HA) will execute real import by which time services.py exists
+- [Phase 02-integration-core]: 02-02: Added .venv/ + venv/ to .gitignore — host is PEP 668 externally-managed Python; ruff/pytest require venv for local runs
+- [Phase 02-integration-core]: 02-02: entry.runtime_data = PartyDispenserData(client, coordinator) pattern adopted — NO hass.data[DOMAIN]. Bronze quality-scale rule honored; services.py (02-04) will look up coordinator via entry.runtime_data.coordinator
 
 ### Pending Todos
 
@@ -90,6 +96,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-20T17:48:31.027Z
-Stopped at: Completed 01-03-PLAN.md — Phase 1 complete (GitLab CI green, v0.1.0 tagged)
+Last session: 2026-04-20T18:56:02.323Z
+Stopped at: Completed 02-02-PLAN.md (Phase 2 Wave 1 foundation — api.py/coordinator.py/entity.py/runtime_data wiring + manifest flip + translations/en.json)
 Resume file: None
