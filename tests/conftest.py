@@ -3,6 +3,7 @@
 These tests do NOT depend on Home Assistant. They only validate the Phase 1
 static artifacts (package imports, hacs.json schema, info.md markdown subset).
 """
+
 from __future__ import annotations
 
 import sys

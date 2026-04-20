@@ -6,6 +6,7 @@ HACS renders info.md as a CommonMark subset. It does NOT render:
 
 Reference: https://github.com/hacs/integration/issues/3995
 """
+
 from __future__ import annotations
 
 import re

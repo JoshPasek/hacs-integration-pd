@@ -3,6 +3,7 @@
 This is the Phase 1 skeleton. It does not create any entities, services, or
 platforms. Phase 2 adds config flow, coordinator, and entity platforms.
 """
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING

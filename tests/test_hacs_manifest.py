@@ -6,6 +6,7 @@ Full schema at:
 HACS schema has `extra=vol.PREVENT_EXTRA` — extra keys FAIL validation. This test
 guards against accidentally adding an unknown key (e.g., "description", "version").
 """
+
 from __future__ import annotations
 
 import json

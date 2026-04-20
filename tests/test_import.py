@@ -1,4 +1,5 @@
 """Phase 1 smoke test: the integration module imports cleanly."""
+
 from __future__ import annotations
 
 
