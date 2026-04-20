@@ -131,6 +131,20 @@ Service schemas defined via `voluptuous` (HA convention).
 - Do NOT assume DinD — CI stays as 2-stage (lint + test). Real hassfest stays deferred to Phase 5.
 - Keep the `if TYPE_CHECKING:` guard pattern for `homeassistant.*` imports where they're only used for type hints. Runtime imports of HA modules at function body level (inside `async_setup_entry` etc.) are necessary and correct.
 
+### Research-backed overrides applied (LOCKED)
+
+Applied to this CONTEXT after 02-RESEARCH.md was produced — supersede any pre-research defaults elsewhere in this file:
+
+1. **Python 3.13 required** (NOT 3.12). `homeassistant ≥ 2026.1` requires Python ≥ 3.13.2. Phase 2 plans must bump:
+   - `pyproject.toml`: `requires-python = ">=3.13"`
+   - `.gitlab-ci.yml`: `image: python:3.13-slim`
+   - `pytest-homeassistant-custom-component` latest Python-3.13-compatible release is `0.13.316` (pins HA 2026.2.3)
+2. **Service registration lives in `async_setup(hass, config)`, NOT `async_setup_entry`.** Services are domain-level (registered once for HA's lifetime); registering per-entry causes double-registration errors when a second config entry is added. Use a `services.py` module with an `async_setup_services(hass)` helper called from `__init__.py::async_setup`. Schema via voluptuous remains in the schema dict.
+3. **Use `entry.runtime_data = PartyDispenserData(client=..., coordinator=...)` pattern (Bronze quality-scale rule).** Drop the legacy `hass.data[DOMAIN][entry_id] = ...` pattern entirely. Type alias `PartyDispenserConfigEntry = ConfigEntry[PartyDispenserData]` anchors the typing across modules.
+4. **Options flow 2025.12+ pattern.** `OptionsFlowHandler.__init__` takes NO args — do NOT set `self.config_entry = config_entry`. The parent class provides `self.config_entry` automatically. Setting it manually is a hard error since HA 2025.12.
+5. **Drop `strings.json`. Ship only `translations/en.json`.** This matches current HA convention (ludeeus blueprint + every 2026-era core integration). Phase 1's stub `strings.json` should be deleted as part of Phase 2. Saves a sync-drift bug and one file to maintain.
+6. **Phase 1's `tests/test_integration_manifest.py::test_manifest_phase1_overrides` assertion must be updated** when Phase 2 flips `config_flow: true` and bumps `version: 0.2.0`. Rename the test to `test_manifest_current_overrides` (or similar), update the `config_flow is False` → `config_flow is True` and the version assertion to `"0.2.0"`. Otherwise CI's `pytest` job will fail.
+
 ### Testing strategy (LOCKED)
 
 - Add dev-dep `pytest-homeassistant-custom-component` (latest stable, 0.13.x per RESEARCH already) to `pyproject.toml` `[project.optional-dependencies] dev`
