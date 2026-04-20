@@ -1,0 +1,43 @@
+# Phase 1 CI skeleton — lint + import-smoke + hassfest manifest validation.
+# Phase 5 will add: HACS action (against GitHub mirror) + full pytest-HA-custom suite.
+
+stages:
+  - lint
+  - test
+  - validate
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  PYTHONDONTWRITEBYTECODE: "1"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+default:
+  image: python:3.12-slim
+  cache:
+    key: pip-$CI_COMMIT_REF_SLUG
+    paths:
+      - .cache/pip/
+
+ruff:
+  stage: lint
+  script:
+    - pip install --quiet ruff==0.15.11
+    - ruff check .
+    - ruff format --check .
+
+import-smoke:
+  stage: test
+  script:
+    - pip install --quiet pytest
+    - pytest tests/ -v
+
+hassfest:
+  stage: validate
+  image: docker:25-cli
+  services:
+    - docker:25-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  script:
+    - docker run --rm -v "$CI_PROJECT_DIR:/github/workspace" ghcr.io/home-assistant/hassfest
