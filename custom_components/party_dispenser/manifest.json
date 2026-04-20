@@ -1,7 +1,7 @@
 {
   "domain": "party_dispenser",
   "name": "Party Dispenser",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "documentation": "https://gitlab.paskiemgmt.com/ava-organization/party-dispenser/hacs-integration-pd",
   "issue_tracker": "https://gitlab.paskiemgmt.com/ava-organization/party-dispenser/hacs-integration-pd/-/issues",
   "codeowners": [],
@@ -9,5 +9,5 @@
   "dependencies": [],
   "iot_class": "local_polling",
   "integration_type": "hub",
-  "config_flow": false
+  "config_flow": true
 }

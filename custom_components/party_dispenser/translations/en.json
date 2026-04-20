@@ -1,0 +1,87 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Party Dispenser",
+        "description": "Connect Home Assistant to your Party Dispenser backend.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "jwt": "API token",
+          "use_tls": "Use HTTPS",
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the backend.",
+      "invalid_auth": "The API token was rejected.",
+      "invalid_response": "The backend returned an unexpected response.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This dispenser is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Party Dispenser options",
+        "description": "Rotate the API token or change polling behaviour. Host and port cannot be changed here — remove and re-add the integration if they have changed.",
+        "data": {
+          "jwt": "API token",
+          "use_tls": "Use HTTPS",
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the backend.",
+      "invalid_auth": "The API token was rejected.",
+      "unknown": "Unexpected error."
+    }
+  },
+  "services": {
+    "order_recipe": {
+      "name": "Order recipe",
+      "description": "Place an order on the dispenser from an existing recipe.",
+      "fields": {
+        "recipe_id": {
+          "name": "Recipe ID",
+          "description": "The UUID of the recipe to order."
+        },
+        "session_uid": {
+          "name": "Session UID",
+          "description": "Identifier stored on the order — defaults to \"home-assistant\"."
+        }
+      }
+    },
+    "cancel_order": {
+      "name": "Cancel order",
+      "description": "Cancel a queued or in-progress order.",
+      "fields": {
+        "order_id": {
+          "name": "Order ID",
+          "description": "The UUID of the order to cancel."
+        },
+        "session_uid": {
+          "name": "Session UID",
+          "description": "Must match the session UID the order was placed with — defaults to \"home-assistant\"."
+        }
+      }
+    },
+    "refresh": {
+      "name": "Refresh",
+      "description": "Force an immediate refresh of the Party Dispenser state (sensors)."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "queue_size": {"name": "Queue size"},
+      "queue_summary": {"name": "Queue summary"},
+      "makeable_count": {"name": "Makeable recipes"},
+      "current_order": {"name": "Current order"},
+      "recipes": {"name": "Recipes"}
+    }
+  }
+}
