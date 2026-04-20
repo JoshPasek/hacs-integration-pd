@@ -53,7 +53,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Config flow (ConfigFlow + OptionsFlowHandler; CFG-01/02/03)
 - [x] 02-02-PLAN.md — Scaffolding + api.py + coordinator.py + entity.py + __init__.py extension (runtime_data pattern; QA-01 partial)
-- [ ] 02-03-PLAN.md — Sensor platform (5 SensorEntity subclasses + device_registry via shared DeviceInfo; INT-01, INT-02)
+- [x] 02-03-PLAN.md — Sensor platform (5 SensorEntity subclasses + device_registry via shared DeviceInfo; INT-01, INT-02)
 - [ ] 02-04-PLAN.md — Wave-0 CI scaffolding + services.py + full pytest suite (INT-03, INT-04, INT-05, QA-01 full)
 
 ### Phase 3: Realtime push
@@ -130,7 +130,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & HACS scaffolding | 3/3 | Complete | 2026-04-20 |
-| 2. Integration core | 1/4 | In Progress | - |
+| 2. Integration core | 3/4 | In Progress|  |
 | 3. Realtime push | 0/2 | Not started | - |
 | 4. Custom Lovelace card | 0/3 | Not started | - |
 | 5. CI + GitHub mirror + releases | 0/2 | Not started | - |

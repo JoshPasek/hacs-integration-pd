@@ -19,8 +19,8 @@
 
 ### Integration Core (Entities & Services)
 
-- [ ] **INT-01**: One `device_registry` entry per config entry labeled "Party Dispenser"
-- [ ] **INT-02**: Entities: `sensor.party_dispenser_queue_size`, `sensor.party_dispenser_queue_summary`, `sensor.party_dispenser_makeable_count`, `sensor.party_dispenser_current_order`, `sensor.party_dispenser_recipes`
+- [x] **INT-01**: One `device_registry` entry per config entry labeled "Party Dispenser"
+- [x] **INT-02**: Entities: `sensor.party_dispenser_queue_size`, `sensor.party_dispenser_queue_summary`, `sensor.party_dispenser_makeable_count`, `sensor.party_dispenser_current_order`, `sensor.party_dispenser_recipes`
 - [ ] **INT-03**: Service `party_dispenser.order_recipe(recipe_id: str)` places an order on the backend
 - [ ] **INT-04**: Service `party_dispenser.cancel_order(order_id: str)` cancels a queued order
 - [ ] **INT-05**: Service `party_dispenser.refresh()` forces a full state refresh
@@ -97,8 +97,8 @@ Deferred to future releases — not in v1.0 scope.
 | CFG-01 | Phase 2 | Complete |
 | CFG-02 | Phase 2 | Complete |
 | CFG-03 | Phase 2 | Complete |
-| INT-01 | Phase 2 | Pending |
-| INT-02 | Phase 2 | Pending |
+| INT-01 | Phase 2 | Complete |
+| INT-02 | Phase 2 | Complete |
 | INT-03 | Phase 2 | Pending |
 | INT-04 | Phase 2 | Pending |
 | INT-05 | Phase 2 | Pending |
