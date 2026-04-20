@@ -69,7 +69,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — WebSocket client + binary_sensor platform + __init__.py wiring + manifest/test atomic flip + version 0.3.0 (RT-01, RT-02, RT-03, RT-04)
+- [x] 03-01-PLAN.md — WebSocket client + binary_sensor platform + __init__.py wiring + manifest/test atomic flip + version 0.3.0 (RT-01, RT-02, RT-03, RT-04)
 - [ ] 03-02-PLAN.md — tests/test_websocket.py (4 tests) + tests/test_binary_sensor.py (2 tests) + coverage gate + annotated v0.3.0 tag (QA-02)
 
 ### Phase 4: Custom Lovelace card
@@ -131,7 +131,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation & HACS scaffolding | 3/3 | Complete | 2026-04-20 |
 | 2. Integration core | 4/4 | Complete | 2026-04-20 |
-| 3. Realtime push | 0/2 | Not started | - |
+| 3. Realtime push | 1/2 | In Progress | - |
 | 4. Custom Lovelace card | 0/3 | Not started | - |
 | 5. CI + GitHub mirror + releases | 0/2 | Not started | - |
 | 6. Docs + migration + polish | 0/2 | Not started | - |

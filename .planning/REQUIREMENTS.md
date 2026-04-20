@@ -27,10 +27,10 @@
 
 ### Realtime Updates
 
-- [ ] **RT-01**: Integration subscribes to backend WebSocket broadcaster on setup
-- [ ] **RT-02**: Queue/order events update HA entities within 1 second of backend broadcast
-- [ ] **RT-03**: `binary_sensor.party_dispenser_connected` reflects WebSocket connection state
-- [ ] **RT-04**: On disconnect, the integration reconnects with exponential backoff (0.5s→30s cap) and falls back to polling until reconnected
+- [x] **RT-01**: Integration subscribes to backend WebSocket broadcaster on setup _(Phase 3 Plan 1 — wiring landed in __init__.py::async_setup_entry; behavior assertion in Plan 03-02)_
+- [x] **RT-02**: Queue/order events update HA entities within 1 second of backend broadcast _(Phase 3 Plan 1 — queue_updated event -> coordinator.async_request_refresh() handler landed; latency assertion in Plan 03-02)_
+- [x] **RT-03**: `binary_sensor.party_dispenser_connected` reflects WebSocket connection state _(Phase 3 Plan 1 — binary_sensor.py + dispatcher subscribe landed; behavior test in Plan 03-02)_
+- [x] **RT-04**: On disconnect, the integration reconnects with exponential backoff (0.5s→30s cap) and falls back to polling until reconnected _(Phase 3 Plan 1 — reconnect loop w/ additive jitter + polling unchanged; backoff-sequence test in Plan 03-02)_
 
 ### Custom Lovelace Card
 
@@ -102,10 +102,10 @@ Deferred to future releases — not in v1.0 scope.
 | INT-03 | Phase 2 | Complete |
 | INT-04 | Phase 2 | Complete |
 | INT-05 | Phase 2 | Complete |
-| RT-01 | Phase 3 | Pending |
-| RT-02 | Phase 3 | Pending |
-| RT-03 | Phase 3 | Pending |
-| RT-04 | Phase 3 | Pending |
+| RT-01 | Phase 3 | Phase 3 (partial) — wiring complete in 03-01; assertions in 03-02 |
+| RT-02 | Phase 3 | Phase 3 (partial) — handler complete in 03-01; latency test in 03-02 |
+| RT-03 | Phase 3 | Phase 3 (partial) — entity complete in 03-01; behavior test in 03-02 |
+| RT-04 | Phase 3 | Phase 3 (partial) — reconnect complete in 03-01; backoff test in 03-02 |
 | UI-01 | Phase 4 | Pending |
 | UI-02 | Phase 4 | Pending |
 | UI-03 | Phase 4 | Pending |
