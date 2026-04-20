@@ -5,7 +5,7 @@ from __future__ import annotations
 from logging import Logger, getLogger
 
 DOMAIN = "party_dispenser"
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 MANUFACTURER = "PartyDispenser"
 MODEL = "Dispenser"
 ATTRIBUTION = "Data provided by Party Dispenser backend"
@@ -43,3 +43,21 @@ SENSOR_KEY_QUEUE_SUMMARY = "queue_summary"
 SENSOR_KEY_MAKEABLE_COUNT = "makeable_count"
 SENSOR_KEY_CURRENT_ORDER = "current_order"
 SENSOR_KEY_RECIPES = "recipes"
+
+# --- WebSocket client (Phase 3) ---
+WS_PATH = "/ws"
+
+# Dispatcher signal format — unique per config entry for multi-instance forward-compat (MULTI-01 v2)
+SIGNAL_WS_CONNECTED = DOMAIN + "_ws_connected_{entry_id}"
+
+# Binary-sensor translation key
+BINARY_SENSOR_KEY_CONNECTED = "connected"
+
+# Reconnect / backoff — base 0.5s, factor 2, cap 30s, additive jitter 25%
+WS_BACKOFF_BASE_SECONDS = 0.5
+WS_BACKOFF_FACTOR = 2.0
+WS_BACKOFF_CAP_SECONDS = 30.0
+WS_BACKOFF_JITTER_RATIO = 0.25  # jitter = uniform(0, 0.25 * current_backoff)
+
+# aiohttp heartbeat — PING every 25s, close socket if PONG not received within ~12.5s
+WS_HEARTBEAT_SECONDS = 25.0

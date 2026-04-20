@@ -82,6 +82,9 @@
       "makeable_count": {"name": "Makeable recipes"},
       "current_order": {"name": "Current order"},
       "recipes": {"name": "Recipes"}
+    },
+    "binary_sensor": {
+      "connected": {"name": "Connected"}
     }
   }
 }

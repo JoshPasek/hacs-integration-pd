@@ -23,6 +23,8 @@ if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
     from homeassistant.core import HomeAssistant
 
+    from .websocket import PartyDispenserWebSocketClient
+
 
 @dataclass
 class PartyDispenserState:
@@ -44,6 +46,7 @@ class PartyDispenserData:
 
     client: PartyDispenserApiClient
     coordinator: PartyDispenserCoordinator
+    ws_client: PartyDispenserWebSocketClient
 
 
 type PartyDispenserConfigEntry = ConfigEntry[PartyDispenserData]
