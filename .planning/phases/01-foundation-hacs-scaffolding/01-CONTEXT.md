@@ -37,7 +37,7 @@ Phase 1 produces a **structurally valid HACS custom repository** at `gitlab.pask
 - Integration path: `custom_components/party_dispenser/`
 - Card path: `www/community/party-dispenser-card/`
 - Root-level HACS metadata covers both
-- HACS repo-type: dual (integration + plugin category). Decision: use HACS multi-category by declaring the integration via `custom_components/` and the card via `hacs.json`'s `filename` + `name` fields for the frontend category. If HACS requires one-category-per-repo, default to **integration** as the HACS category and ship the card by documenting `/hacsfiles/party-dispenser-card/party-dispenser-card.js` as a Lovelace resource. Research agent to confirm which model HACS currently supports.
+- HACS repo-type: **integration** (single category — HACS enforces one-per-repo per research findings, verified against `custom_components/hacs/utils/validate.py`). Shipping mechanism for the card is deferred to Phase 4 and will choose between: (a) the embedded-card pattern (integration registers the card as a Lovelace resource at startup — single HACS install), or (b) split the card into a second HACS repo published under the `plugin` category. Phase 1 keeps both options open by scaffolding directories at both `custom_components/party_dispenser/` and `www/community/party-dispenser-card/`.
 
 ### Integration manifest (LOCKED values)
 - `domain`: `party_dispenser`
@@ -47,9 +47,9 @@ Phase 1 produces a **structurally valid HACS custom repository** at `gitlab.pask
 - `issue_tracker`: same as documentation + `/-/issues`
 - `codeowners`: `[]` (single maintainer; can add later)
 - `requirements`: `[]` (Phase 1 adds no third-party Python deps)
-- `iot_class`: `local_push` (we'll have WebSocket push by Phase 3; for v0.1.0 which is a no-op, `local_polling` is equally valid — research agent to decide which is correct for a no-op shell)
+- `iot_class`: `local_polling` (conservative / truthful for a no-op v0.1.0; Phase 3 flips to `local_push` once the WebSocket client lands — decision per research findings)
 - `config_flow`: `false` in v0.1.0 (no config flow logic yet; Phase 2 flips this to `true`)
-- `integration_type`: `device` (one device per config entry)
+- `integration_type`: `hub` (forward-compatible for multi-dispenser v2 per MULTI-01 — lets one config entry represent N devices without a breaking manifest change; decision per research findings)
 
 ### hacs.json (LOCKED values)
 - `name`: "Party Dispenser"
