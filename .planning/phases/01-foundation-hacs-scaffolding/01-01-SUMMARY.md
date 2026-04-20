@@ -90,7 +90,7 @@ Each task was committed atomically:
 2. **Task 2: LICENSE + .gitignore + stub README** — `79d7c0f` (feat)
 3. **Task 3: Card placeholder directory** — `76852a2` (feat)
 
-**Plan metadata:** (pending final docs commit below — see Next section)
+**Plan metadata:** `2947216` (docs: complete HACS root metadata plan — includes SUMMARY.md, STATE.md, ROADMAP.md, REQUIREMENTS.md updates)
 
 ## Files Created/Modified
 
