@@ -86,9 +86,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 04-01: Card scaffolding (lit-element, TS, rollup, resource registration via HACS frontend category)
-- [ ] 04-02: UI components (recipe grid, queue list, summary header) + service invocation
-- [ ] 04-03: Mobile/desktop layout + card unit tests
+- [ ] 04-01-PLAN.md — Card scaffolding + integration-side frontend registration (Wave 0: workspace + Python frontend module + atomic manifest flip + CI Node stage)
+- [ ] 04-02-PLAN.md — UI components (root card + 6 pd-* leaves + editor) + service invocation via hass.callService
+- [ ] 04-03-PLAN.md — Mobile/desktop CSS refinement + 36 @web/test-runner tests + v0.4.0 annotated tag
 
 ### Phase 5: CI + GitHub mirror + release automation
 **Goal**: A tag on the GitLab repo automatically produces a GitHub release on the mirror, so a HACS user can install from the GitHub URL and get the right version.
