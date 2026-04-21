@@ -39,14 +39,14 @@
 - [x] **UI-03**: Card renders live queue with per-item cancel buttons
 - [x] **UI-04**: Card renders summary counts (queue size, makeable recipes)
 - [x] **UI-05**: Card calls integration services (primary path) — no backend network calls from browser by default
-- [ ] **UI-06**: Card is usable on mobile HA companion (single-column layout <600px wide)
+- [x] **UI-06**: Card is usable on mobile HA companion (single-column layout <600px wide)
 - [x] **UI-07**: Card visual style matches HA core conventions (mushroom-ish chips, HA theming variables)
 
 ### Testing & Quality
 
 - [x] **QA-01**: `pytest-homeassistant-custom-component` tests cover config flow (happy + sad paths), each service, coordinator state machine _(Phase 2 partial — behaviors coded in 02-02; pytest-HA suite lands in 02-04)_
 - [x] **QA-02**: WebSocket reconnect logic has dedicated tests (drop simulation, backoff assertions)
-- [ ] **QA-03**: Card has unit tests covering render + service-call invocation (using `@web/test-runner` or similar)
+- [x] **QA-03**: Card has unit tests covering render + service-call invocation (using `@web/test-runner` or similar)
 - [x] **QA-04**: CI pipeline runs lint + all tests on every push; blocks merge on failure
 
 ### Distribution & Release
@@ -111,11 +111,11 @@ Deferred to future releases — not in v1.0 scope.
 | UI-03 | Phase 4 | Complete |
 | UI-04 | Phase 4 | Complete |
 | UI-05 | Phase 4 | Complete |
-| UI-06 | Phase 4 | Pending |
+| UI-06 | Phase 4 | Complete |
 | UI-07 | Phase 4 | Complete |
 | QA-01 | Phase 2 | Complete |
 | QA-02 | Phase 3 | Complete |
-| QA-03 | Phase 4 | Pending |
+| QA-03 | Phase 4 | Complete |
 | QA-04 | Phase 1 (skeleton), Phase 5 (full) | Complete |
 | REL-01 | Phase 1 | Complete |
 | REL-02 | Phase 5 | Pending |

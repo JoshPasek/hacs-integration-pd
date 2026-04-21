@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to execute
-stopped_at: Completed 04-02-PLAN.md — card TypeScript implementation + built bundle
-last_updated: "2026-04-21T01:58:33.534Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 04-03-PLAN.md — mobile CSS + 38 tests + v0.4.0 tag — Phase 4 complete
+last_updated: "2026-04-21T02:08:15.794Z"
 progress:
   total_phases: 6
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 12
-  completed_plans: 11
+  completed_plans: 12
 ---
 
 # Project State
@@ -64,6 +64,7 @@ Plan: 3 of 3
 *Updated after each plan completion*
 | Phase 04-custom-lovelace-card P01 | 8 | 3 tasks | 20 files |
 | Phase 04-custom-lovelace-card P02 | 4min | 3 tasks | 12 files |
+| Phase 04-custom-lovelace-card P03 | 20 | 3 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -110,6 +111,8 @@ Recent decisions affecting current work:
 - [Phase 03-realtime-push]: 03-02: Phase 3 COMPLETE — 60/60 tests green, 88% coverage on websocket.py, v0.3.0 pushed, all version-of-record files aligned
 - [Phase 04-custom-lovelace-card]: Removed 'frontend' from manifest.json dependencies — hass_frontend not in test venv; 'http' is sufficient for async_register_static_paths; async_setup_frontend defers to EVENT_HOMEASSISTANT_STARTED so Lovelace is available
 - [Phase 04-custom-lovelace-card]: Rollup sourcemap warning from inject-card-version is cosmetic (string replacement without sourcemap continuation); build exits 0; deferring sourcemap fix to Phase 6 polish
+- [Phase 04-custom-lovelace-card]: Added __CARD_VERSION__ define to wtr esbuildPlugin — rollup injects this global at build time but WTR's esbuildPlugin doesn't; fixed by adding define stub to web-test-runner.config.mjs
+- [Phase 04-custom-lovelace-card]: Event dispatch in tests targets ha-card inside shadowRoot — @pd-order-recipe/@pd-cancel-order lit listeners are bound to ha-card in shadow DOM; dispatching from light-DOM host doesn't reach them
 
 ### Pending Todos
 
@@ -121,6 +124,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-21T01:58:33.531Z
-Stopped at: Completed 04-02-PLAN.md — card TypeScript implementation + built bundle
+Last session: 2026-04-21T02:08:15.791Z
+Stopped at: Completed 04-03-PLAN.md — mobile CSS + 38 tests + v0.4.0 tag — Phase 4 complete
 Resume file: None
