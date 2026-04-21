@@ -11,6 +11,11 @@ export default {
       ts: true,
       target: 'es2020',
       tsconfig: './tsconfig.json',
+      // Provide a test-time stub for the rollup-injected build constant so that
+      // firstUpdated() version banner doesn't throw ReferenceError during wtr runs.
+      define: {
+        __CARD_VERSION__: JSON.stringify('test'),
+      },
     }),
   ],
   browsers: [
