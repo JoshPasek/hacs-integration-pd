@@ -115,6 +115,17 @@ Inspiration from the existing dispenser Vue frontend (`ava-organization/party-di
 - If embedded-card path chosen, the integration Python side needs to register a static path via `hass.http.register_static_path(...)` and add the Lovelace resource via `frontend.async_register_built_in_panel` or equivalent — research confirms exact API
 - If embedded-card path chosen, card files must be copied to `custom_components/party_dispenser/frontend/` at build time so they ship with the HACS integration-category install
 
+### Research-backed overrides applied (LOCKED)
+
+Added after 04-RESEARCH.md produced (2026-04-20). Supersede any earlier drafts in UI-SPEC:
+
+1. **Defensive `await resources.async_load()` before `async_create_item` in Python static-path registration.** HA core issue #165767 (fix PR #165773 merged 2026-04-10) — pre-fix versions silently DESTROY all existing Lovelace resources on `async_create_item` without `async_load` first. Our CI pins HA 2026.2.3 via pytest-HA-custom, which is the buggy version. Cost: 1 extra line. Risk of omission: user loses every Lovelace resource in their dashboard on first integration load.
+2. **Node 22-alpine for GitLab CI card-build stage**, with `mcr.microsoft.com/playwright:v1.x-jammy` fallback documented in the `.gitlab-ci.yml` commentary if Alpine Chromium's V8 coverage API proves unreliable on the self-hosted runner.
+3. **`tsconfig.json`** — `"useDefineForClassFields": false` + `"experimentalDecorators": true` — required for lit's legacy decorator system. UI-SPEC didn't specify; research does.
+4. **`rollup-plugin-copy 3.5.0`** for copying the built bundle from `www/community/party-dispenser-card/dist/` → `custom_components/party_dispenser/frontend/` at build time.
+5. **`eslint` deferred to Phase 6 polish.** Phase 4 CI uses `tsc --noEmit` as the `lint` step. UI-SPEC §15.7 mentioned eslint without a config; rather than invent one now, we typecheck only.
+6. **`dist/` NOT committed.** Source-controlled files: `www/community/party-dispenser-card/src/` + config + tests. Build output: `custom_components/party_dispenser/frontend/party-dispenser-card.js` + `.js.map` (these ARE committed, because Python serves them and CI builds once per release). `www/community/party-dispenser-card/dist/` is `.gitignore`'d (already is — Phase 1 set this).
+
 ### Claude's Discretion
 - Final component tree (single big card vs. nested child components)
 - State management inside the card (plain reactive properties vs. a central mini-store)
