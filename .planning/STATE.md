@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Ready to execute
-stopped_at: Completed 04-01-PLAN.md — card workspace scaffold, Python frontend module, v0.4.0 manifest, CI Node stage
-last_updated: "2026-04-21T01:50:36.188Z"
+stopped_at: Completed 04-02-PLAN.md — card TypeScript implementation + built bundle
+last_updated: "2026-04-21T01:58:33.534Z"
 progress:
   total_phases: 6
   completed_phases: 3
   total_plans: 12
-  completed_plans: 10
+  completed_plans: 11
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-04-20)
 ## Current Position
 
 Phase: 04 (custom-lovelace-card) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -63,6 +63,7 @@ Plan: 2 of 3
 
 *Updated after each plan completion*
 | Phase 04-custom-lovelace-card P01 | 8 | 3 tasks | 20 files |
+| Phase 04-custom-lovelace-card P02 | 4min | 3 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -108,6 +109,7 @@ Recent decisions affecting current work:
 - [Phase 03-realtime-push]: 03-02: v0.3.0 annotated tag (bb753fd) pushed to origin at HEAD=28f0910 with structured release-notes message mirroring v0.2.0 shape (What's included / Requirements closed / Research overrides / Deferred / Commits = git log --oneline v0.2.0..HEAD)
 - [Phase 03-realtime-push]: 03-02: Phase 3 COMPLETE — 60/60 tests green, 88% coverage on websocket.py, v0.3.0 pushed, all version-of-record files aligned
 - [Phase 04-custom-lovelace-card]: Removed 'frontend' from manifest.json dependencies — hass_frontend not in test venv; 'http' is sufficient for async_register_static_paths; async_setup_frontend defers to EVENT_HOMEASSISTANT_STARTED so Lovelace is available
+- [Phase 04-custom-lovelace-card]: Rollup sourcemap warning from inject-card-version is cosmetic (string replacement without sourcemap continuation); build exits 0; deferring sourcemap fix to Phase 6 polish
 
 ### Pending Todos
 
@@ -119,6 +121,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-21T01:50:36.185Z
-Stopped at: Completed 04-01-PLAN.md — card workspace scaffold, Python frontend module, v0.4.0 manifest, CI Node stage
+Last session: 2026-04-21T01:58:33.531Z
+Stopped at: Completed 04-02-PLAN.md — card TypeScript implementation + built bundle
 Resume file: None

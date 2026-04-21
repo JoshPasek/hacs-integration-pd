@@ -35,12 +35,12 @@
 ### Custom Lovelace Card
 
 - [x] **UI-01**: Card type `custom:party-dispenser-card` registers via HACS frontend install
-- [ ] **UI-02**: Card renders recipe grid (make-now button per recipe when makeable)
-- [ ] **UI-03**: Card renders live queue with per-item cancel buttons
-- [ ] **UI-04**: Card renders summary counts (queue size, makeable recipes)
-- [ ] **UI-05**: Card calls integration services (primary path) — no backend network calls from browser by default
+- [x] **UI-02**: Card renders recipe grid (make-now button per recipe when makeable)
+- [x] **UI-03**: Card renders live queue with per-item cancel buttons
+- [x] **UI-04**: Card renders summary counts (queue size, makeable recipes)
+- [x] **UI-05**: Card calls integration services (primary path) — no backend network calls from browser by default
 - [ ] **UI-06**: Card is usable on mobile HA companion (single-column layout <600px wide)
-- [ ] **UI-07**: Card visual style matches HA core conventions (mushroom-ish chips, HA theming variables)
+- [x] **UI-07**: Card visual style matches HA core conventions (mushroom-ish chips, HA theming variables)
 
 ### Testing & Quality
 
@@ -107,12 +107,12 @@ Deferred to future releases — not in v1.0 scope.
 | RT-03 | Phase 3 | Complete |
 | RT-04 | Phase 3 | Complete |
 | UI-01 | Phase 4 | Complete |
-| UI-02 | Phase 4 | Pending |
-| UI-03 | Phase 4 | Pending |
-| UI-04 | Phase 4 | Pending |
-| UI-05 | Phase 4 | Pending |
+| UI-02 | Phase 4 | Complete |
+| UI-03 | Phase 4 | Complete |
+| UI-04 | Phase 4 | Complete |
+| UI-05 | Phase 4 | Complete |
 | UI-06 | Phase 4 | Pending |
-| UI-07 | Phase 4 | Pending |
+| UI-07 | Phase 4 | Complete |
 | QA-01 | Phase 2 | Complete |
 | QA-02 | Phase 3 | Complete |
 | QA-03 | Phase 4 | Pending |

@@ -87,7 +87,7 @@ Plans:
 
 Plans:
 - [x] 04-01-PLAN.md — Card scaffolding + integration-side frontend registration (Wave 0: workspace + Python frontend module + atomic manifest flip + CI Node stage)
-- [ ] 04-02-PLAN.md — UI components (root card + 6 pd-* leaves + editor) + service invocation via hass.callService
+- [x] 04-02-PLAN.md — UI components (root card + 6 pd-* leaves + editor) + service invocation via hass.callService
 - [ ] 04-03-PLAN.md — Mobile/desktop CSS refinement + 36 @web/test-runner tests + v0.4.0 annotated tag
 
 ### Phase 5: CI + GitHub mirror + release automation
@@ -132,6 +132,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Foundation & HACS scaffolding | 3/3 | Complete | 2026-04-20 |
 | 2. Integration core | 4/4 | Complete | 2026-04-20 |
 | 3. Realtime push | 2/2 | Complete   | 2026-04-20 |
-| 4. Custom Lovelace card | 1/3 | In Progress|  |
+| 4. Custom Lovelace card | 2/3 | In Progress|  |
 | 5. CI + GitHub mirror + releases | 0/2 | Not started | - |
 | 6. Docs + migration + polish | 0/2 | Not started | - |
