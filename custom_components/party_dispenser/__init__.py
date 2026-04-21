@@ -19,6 +19,7 @@ from .const import (
     WS_PATH,
 )
 from .coordinator import PartyDispenserCoordinator, PartyDispenserData
+from .frontend import async_setup_frontend
 from .services import async_setup_services
 from .websocket import PartyDispenserWebSocketClient
 
@@ -33,6 +34,7 @@ PLATFORMS: list[Platform] = [Platform.SENSOR, Platform.BINARY_SENSOR]
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up the Party Dispenser component (domain-level, once)."""
     async_setup_services(hass)
+    await async_setup_frontend(hass)  # NEW Phase 4 — registers card static path + Lovelace resource
     return True
 
 

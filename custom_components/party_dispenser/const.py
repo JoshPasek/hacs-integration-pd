@@ -61,3 +61,8 @@ WS_BACKOFF_JITTER_RATIO = 0.25  # jitter = uniform(0, 0.25 * current_backoff)
 
 # aiohttp heartbeat — PING every 25s, close socket if PONG not received within ~12.5s
 WS_HEARTBEAT_SECONDS = 25.0
+
+# --- Frontend / Lovelace card (Phase 4) ---
+FRONTEND_URL_BASE = f"/{DOMAIN}_frontend"  # => /party_dispenser_frontend
+FRONTEND_CARD_FILENAME = "party-dispenser-card.js"
+FRONTEND_CARD_NAME = "Party Dispenser Card"
