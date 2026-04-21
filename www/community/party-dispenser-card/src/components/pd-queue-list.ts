@@ -43,6 +43,15 @@ export class PdQueueList extends LitElement {
         gap: var(--pd-space-sm, 8px);
         padding: var(--pd-space-lg, 16px);
       }
+
+      /* Desktop: queue is a sticky right rail — cap height, scroll within */
+      @container pd-card (min-width: 900px) {
+        :host {
+          max-height: 600px;
+          overflow-y: auto;
+        }
+      }
+
       .empty {
         display: flex;
         flex-direction: column;
