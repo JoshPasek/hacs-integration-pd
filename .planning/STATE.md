@@ -2,16 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: "Phase 3 COMPLETE — tests/test_websocket.py (4 tests) + tests/test_binary_sensor.py (2 tests) landed; 60/60 tests green, 88% coverage on websocket.py (QA-02 gate cleared); v0.3.0 annotated tag pushed to origin. Next: Phase 4 (custom Lovelace card)."
-stopped_at: Completed 03-02-PLAN.md — Phase 3 COMPLETE (WS + binary_sensor tests + v0.3.0 tag pushed to origin)
-last_updated: "2026-04-20T20:59:28.846Z"
-last_activity: 2026-04-20
+status: Ready to execute
+stopped_at: Completed 04-01-PLAN.md — card workspace scaffold, Python frontend module, v0.4.0 manifest, CI Node stage
+last_updated: "2026-04-21T01:50:36.188Z"
 progress:
   total_phases: 6
   completed_phases: 3
-  total_plans: 9
-  completed_plans: 9
-  percent: 50
+  total_plans: 12
+  completed_plans: 10
 ---
 
 # Project State
@@ -21,16 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-20)
 
 **Core value:** One-click install and a live, push-driven dashboard card that controls the dispenser.
-**Current focus:** Phase 3 COMPLETE (WebSocket tests + binary_sensor tests + v0.3.0 tag pushed). Next: Phase 4 — custom Lovelace card (lit-element recipe grid + queue + summary, wired to integration services).
+**Current focus:** Phase 04 — custom-lovelace-card
 
 ## Current Position
 
-Phase: 3 of 6 (Realtime push) — COMPLETE
-Plan: 2 of 2 in current phase complete (03-01 + 03-02 both landed)
-Status: Phase 3 COMPLETE — 60/60 tests green, 88% coverage on websocket.py (QA-02 gate cleared); annotated v0.3.0 tag pushed to origin at HEAD=28f0910.
-Last activity: 2026-04-20
-
-Progress: [█████░░░░░] 50% (3 of 6 phases complete; 9 of 9 plans landed across phases 1-3; Phase 4 has plans not yet drafted)
+Phase: 04 (custom-lovelace-card) — EXECUTING
+Plan: 2 of 3
 
 ## Performance Metrics
 
@@ -68,6 +62,7 @@ Progress: [█████░░░░░] 50% (3 of 6 phases complete; 9 of 9 p
 - Trend: Stable (tight plans = shorter executions; Phase 3 P02 was fast despite requiring a Rule 1 fix on a tricky `asyncio.sleep` patch)
 
 *Updated after each plan completion*
+| Phase 04-custom-lovelace-card P01 | 8 | 3 tasks | 20 files |
 
 ## Accumulated Context
 
@@ -112,6 +107,7 @@ Recent decisions affecting current work:
 - [Phase 03-realtime-push]: 03-02: Coverage on websocket.py landed at 88.31% — skipped the research's optional extras (test_backoff_doubles_then_caps_at_30s + test_malformed_json_doesnt_disconnect) since the 80% QA-02 gate was already cleared; uncovered lines are idempotent-guard + fault-injection branches (production path 100% covered)
 - [Phase 03-realtime-push]: 03-02: v0.3.0 annotated tag (bb753fd) pushed to origin at HEAD=28f0910 with structured release-notes message mirroring v0.2.0 shape (What's included / Requirements closed / Research overrides / Deferred / Commits = git log --oneline v0.2.0..HEAD)
 - [Phase 03-realtime-push]: 03-02: Phase 3 COMPLETE — 60/60 tests green, 88% coverage on websocket.py, v0.3.0 pushed, all version-of-record files aligned
+- [Phase 04-custom-lovelace-card]: Removed 'frontend' from manifest.json dependencies — hass_frontend not in test venv; 'http' is sufficient for async_register_static_paths; async_setup_frontend defers to EVENT_HOMEASSISTANT_STARTED so Lovelace is available
 
 ### Pending Todos
 
@@ -123,6 +119,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-20T20:59:28.843Z
-Stopped at: Completed 03-02-PLAN.md — Phase 3 COMPLETE (WS + binary_sensor tests + v0.3.0 tag pushed to origin)
+Last session: 2026-04-21T01:50:36.185Z
+Stopped at: Completed 04-01-PLAN.md — card workspace scaffold, Python frontend module, v0.4.0 manifest, CI Node stage
 Resume file: None

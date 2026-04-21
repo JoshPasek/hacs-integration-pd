@@ -9,7 +9,7 @@
 
 - [x] **HACS-01**: Repo is HACS-installable as a custom repository (root `hacs.json`, valid `custom_components/party_dispenser/manifest.json`, `info.md`)
 - [ ] **HACS-02**: Semver release tags drive HACS version selection (tags on GitLab propagate to GitHub mirror)
-- [ ] **HACS-03**: Card is discoverable under the HACS "Frontend" category via a second `hacs.json` entry or combined config
+- [x] **HACS-03**: Card is discoverable under the HACS "Frontend" category via a second `hacs.json` entry or combined config
 
 ### Installation & Configuration
 
@@ -34,7 +34,7 @@
 
 ### Custom Lovelace Card
 
-- [ ] **UI-01**: Card type `custom:party-dispenser-card` registers via HACS frontend install
+- [x] **UI-01**: Card type `custom:party-dispenser-card` registers via HACS frontend install
 - [ ] **UI-02**: Card renders recipe grid (make-now button per recipe when makeable)
 - [ ] **UI-03**: Card renders live queue with per-item cancel buttons
 - [ ] **UI-04**: Card renders summary counts (queue size, makeable recipes)
@@ -93,7 +93,7 @@ Deferred to future releases — not in v1.0 scope.
 |-------------|-------|--------|
 | HACS-01 | Phase 1 | Complete |
 | HACS-02 | Phase 5 | Pending |
-| HACS-03 | Phase 4 | Pending |
+| HACS-03 | Phase 4 | Complete |
 | CFG-01 | Phase 2 | Complete |
 | CFG-02 | Phase 2 | Complete |
 | CFG-03 | Phase 2 | Complete |
@@ -106,7 +106,7 @@ Deferred to future releases — not in v1.0 scope.
 | RT-02 | Phase 3 | Complete |
 | RT-03 | Phase 3 | Complete |
 | RT-04 | Phase 3 | Complete |
-| UI-01 | Phase 4 | Pending |
+| UI-01 | Phase 4 | Complete |
 | UI-02 | Phase 4 | Pending |
 | UI-03 | Phase 4 | Pending |
 | UI-04 | Phase 4 | Pending |
