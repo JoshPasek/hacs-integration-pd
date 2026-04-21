@@ -585,6 +585,15 @@ PdQueueList.styles = [
         gap: var(--pd-space-sm, 8px);
         padding: var(--pd-space-lg, 16px);
       }
+
+      /* Desktop: queue is a sticky right rail — cap height, scroll within */
+      @container pd-card (min-width: 900px) {
+        :host {
+          max-height: 600px;
+          overflow-y: auto;
+        }
+      }
+
       .empty {
         display: flex;
         flex-direction: column;
@@ -736,22 +745,27 @@ let PartyDispenserCard = class PartyDispenserCard extends i {
         @pd-order-recipe=${this._handleOrderRecipe}
         @pd-cancel-order=${this._handleCancelOrder}
       >
-        <pd-summary-header
-          .queueSize=${d.queueSize}
-          .makeableCount=${d.makeableCount}
-          .connected=${d.connected}
-          .title=${this._config.title ?? 'Party Dispenser'}
-          .showConnection=${this._config.show_connection_status ?? true}
-        ></pd-summary-header>
-        <pd-recipe-grid
-          .recipes=${d.recipes}
-          .maxVisible=${this._config.max_recipes_visible}
-          .showNotMakeable=${this._config.show_not_makeable ?? true}
-        ></pd-recipe-grid>
-        <pd-queue-list
-          .queue=${mergedQueue}
-          .currentOrderId=${d.currentOrderId}
-        ></pd-queue-list>
+        <div class="layout">
+          <pd-summary-header
+            class="slot-header"
+            .queueSize=${d.queueSize}
+            .makeableCount=${d.makeableCount}
+            .connected=${d.connected}
+            .title=${this._config.title ?? 'Party Dispenser'}
+            .showConnection=${this._config.show_connection_status ?? true}
+          ></pd-summary-header>
+          <pd-recipe-grid
+            class="slot-grid"
+            .recipes=${d.recipes}
+            .maxVisible=${this._config.max_recipes_visible}
+            .showNotMakeable=${this._config.show_not_makeable ?? true}
+          ></pd-recipe-grid>
+          <pd-queue-list
+            class="slot-queue"
+            .queue=${mergedQueue}
+            .currentOrderId=${d.currentOrderId}
+          ></pd-queue-list>
+        </div>
       </ha-card>
     `;
     }
@@ -768,6 +782,53 @@ PartyDispenserCard.styles = [
         display: block;
         border-radius: var(--pd-radius-lg, 16px);
         overflow: hidden;
+      }
+
+      /* Mobile default: stacked single column */
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "grid"
+          "queue";
+      }
+      .slot-header { grid-area: header; }
+      .slot-grid   { grid-area: grid; }
+      .slot-queue  { grid-area: queue; }
+
+      /* Tablet + Desktop: header full-width, grid + queue side-by-side right rail */
+      @container pd-card (min-width: 600px) {
+        .layout {
+          grid-template-columns: 60% 40%;
+          grid-template-areas:
+            "header header"
+            "grid   queue";
+        }
+      }
+      @container pd-card (min-width: 900px) {
+        .layout {
+          grid-template-columns: 65% 35%;
+        }
+      }
+      @container pd-card (min-width: 1200px) {
+        .layout {
+          grid-template-columns: 70% 30%;
+        }
+      }
+
+      /* Fallback for browsers without container queries (rare on HA-compatible in 2026) */
+      @supports not (container-type: inline-size) {
+        @media (min-width: 600px) {
+          .layout {
+            grid-template-columns: 60% 40%;
+            grid-template-areas:
+              "header header"
+              "grid   queue";
+          }
+        }
+        @media (min-width: 900px)  { .layout { grid-template-columns: 65% 35%; } }
+        @media (min-width: 1200px) { .layout { grid-template-columns: 70% 30%; } }
       }
     `,
 ];
