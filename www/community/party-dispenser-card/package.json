@@ -1,0 +1,37 @@
+{
+  "name": "party-dispenser-card",
+  "version": "0.4.0",
+  "description": "Custom Lovelace card for the Party Dispenser HACS integration",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "test": "web-test-runner --config web-test-runner.config.mjs",
+    "test:watch": "web-test-runner --config web-test-runner.config.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lit": "3.3.1",
+    "custom-card-helpers": "1.9.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.2",
+    "tslib": "2.6.0",
+    "rollup": "4.30.0",
+    "@rollup/plugin-typescript": "12.1.4",
+    "@rollup/plugin-node-resolve": "16.0.1",
+    "@rollup/plugin-commonjs": "28.0.6",
+    "@rollup/plugin-json": "6.1.0",
+    "@rollup/plugin-terser": "1.0.0",
+    "rollup-plugin-copy": "3.5.0",
+    "@web/test-runner": "0.20.0",
+    "@web/test-runner-playwright": "0.11.0",
+    "@web/dev-server-esbuild": "1.0.5",
+    "@open-wc/testing": "4.0.0",
+    "@esm-bundle/chai": "4.3.4-fix.0",
+    "sinon": "17.0.2",
+    "@types/sinon": "17.0.4"
+  }
+}

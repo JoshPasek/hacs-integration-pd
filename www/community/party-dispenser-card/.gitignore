@@ -1,0 +1,16 @@
+# Node.js
+node_modules/
+npm-debug.log
+*.log
+
+# Build output (intermediate — Python serves the copy under custom_components/party_dispenser/frontend/)
+dist/
+
+# Test output
+coverage/
+.nyc_output/
+
+# Editor
+.DS_Store
+.vscode/
+.idea/
