@@ -1,6 +1,6 @@
 [project]
 name = "party_dispenser"
-version = "0.3.0"
+version = "0.4.0"
 description = "Home Assistant integration and Lovelace card for the Party Dispenser backend."
 requires-python = ">=3.13"
 readme = "README.md"

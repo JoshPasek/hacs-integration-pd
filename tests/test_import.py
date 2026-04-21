@@ -77,5 +77,5 @@ def test_const_exports() -> None:
     const = _load_const_directly()
 
     assert const.DOMAIN == "party_dispenser"
-    assert const.VERSION == "0.3.0"
+    assert const.VERSION == "0.4.0"
     assert const.MANUFACTURER == "PartyDispenser"

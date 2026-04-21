@@ -1,5 +1,7 @@
 # Phase 2 CI — 2-stage pipeline: lint + test on python:3.13-slim with the full
 # pytest-homeassistant-custom-component harness installed via `.[dev]`.
+# Phase 4 adds a `test-card` Node 22 stage (image: node:22-alpine) for the
+# Lovelace card workspace — typecheck + build + @web/test-runner + grep gates.
 # Phase 5 will add: HACS action (against GitHub mirror) + real hassfest.
 #
 # Note: the original plan called for a docker-based `hassfest` validate-stage job.
@@ -9,6 +11,11 @@
 # Bespoke `tests/test_integration_manifest.py` covers the same structural validation
 # (enum values, required fields, semver, URL shapes). Real hassfest + HACS action
 # are deferred to Phase 5 where they run against the GitHub mirror.
+#
+# Node 22-alpine fallback (Phase 4 research override #2):
+# If Alpine Chromium's V8 coverage API proves unreliable on the self-hosted runner,
+# swap `image: node:22-alpine` for `image: mcr.microsoft.com/playwright:v1.x-jammy`
+# which ships the canonical Chromium. No other changes required; playwright auto-detects.
 
 stages:
   - lint
@@ -18,6 +25,7 @@ variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   PYTHONDONTWRITEBYTECODE: "1"
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.cache/npm"
 
 default:
   image: python:3.13-slim
@@ -42,3 +50,48 @@ pytest:
     # path fails with FileNotFoundError. "compat" mode avoids the hook entirely.
     - pip install --quiet -e ".[dev]" --config-settings editable_mode=compat
     - pytest tests/ -v
+
+# NEW — Phase 4
+test-card:
+  stage: test
+  image: node:22-alpine
+  cache:
+    key: npm-$CI_COMMIT_REF_SLUG
+    paths:
+      - .cache/npm/
+      - www/community/party-dispenser-card/node_modules/
+  before_script:
+    # Chromium for Playwright (wtr uses playwrightLauncher product: 'chromium').
+    # If V8 coverage API is unreliable on this runner's Alpine Chromium, swap
+    # the image: field above to `mcr.microsoft.com/playwright:v1.x-jammy`.
+    - apk add --no-cache chromium nss freetype harfbuzz ca-certificates ttf-freefont
+    - export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+    - export PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser
+  script:
+    - cd www/community/party-dispenser-card
+    - npm ci
+    - npm run typecheck
+    - npm run build      # rollup -> dist/ -> copied to ../../../custom_components/party_dispenser/frontend/
+    - npm test           # web-test-runner; coverageConfig.threshold gates >=70%
+    # Grep gates (UI-SPEC §3.1 no-hardcoded-hex + §19.1 no-fetch UI-05):
+    - |
+      if grep -rE '#[0-9a-fA-F]{3,6}' src/ | grep -v ':host'; then
+        echo "FAIL: hex color outside :host fallback block (UI-SPEC §3.1 grep gate)"
+        exit 1
+      fi
+    - |
+      if grep -rE '\bfetch\s*\(' src/; then
+        echo "FAIL: direct fetch() call (REQ UI-05 forbids browser->backend network calls)"
+        exit 1
+      fi
+  coverage: '/Total:\s*\d+\.?\d+%/'
+  artifacts:
+    when: always
+    paths:
+      - www/community/party-dispenser-card/coverage/
+      - www/community/party-dispenser-card/dist/
+      - custom_components/party_dispenser/frontend/
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: www/community/party-dispenser-card/coverage/cobertura-coverage.xml

@@ -174,18 +174,23 @@ def test_manifest_dependencies_is_list_of_strings() -> None:
             assert isinstance(dep, str), f"dependencies entries must be strings, got {dep!r}"
 
 
-def test_manifest_phase3_overrides() -> None:
-    """Phase 3 locked decisions per 03-CONTEXT.md (WS push landed, version bumped)."""
+def test_manifest_phase4_overrides() -> None:
+    """Phase 4 locked decisions per 04-CONTEXT.md (card shipped, deps flipped, version bumped)."""
     manifest = _load()
     assert manifest.get("iot_class") == "local_push", (
-        "Phase 3: iot_class flipped to 'local_push' when WebSocket subscription landed"
+        "Phase 4: iot_class stays 'local_push' (Phase 3 flipped it; WebSocket still active)"
     )
     assert manifest.get("integration_type") == "hub", (
-        "Phase 3: integration_type stays 'hub' (forward-compat for multi-dispenser v2)"
+        "Phase 4: integration_type stays 'hub' (forward-compat for multi-dispenser v2)"
     )
     assert manifest.get("config_flow") is True, (
-        "Phase 3: config_flow stays true (Phase 2 flipped it; we don't touch it)"
+        "Phase 4: config_flow stays true (Phase 2 flipped it; we don't touch it)"
     )
-    assert manifest.get("version") == "0.3.0", (
-        "Phase 3: version bumped to 0.3.0 per CONTEXT.md locked decision"
+    assert manifest.get("version") == "0.4.0", (
+        "Phase 4: version bumped to 0.4.0 per CONTEXT.md locked decision"
+    )
+    assert manifest.get("dependencies") == ["http"], (
+        "Phase 4: dependencies flipped from [] to ['http'] — http required for "
+        "async_register_static_paths; 'frontend' omitted (hass_frontend not in test venv, "
+        "async_setup_frontend defers until EVENT_HOMEASSISTANT_STARTED so Lovelace loads first)"
     )

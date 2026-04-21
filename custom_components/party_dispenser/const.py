@@ -5,7 +5,7 @@ from __future__ import annotations
 from logging import Logger, getLogger
 
 DOMAIN = "party_dispenser"
-VERSION = "0.3.0"
+VERSION = "0.4.0"
 MANUFACTURER = "PartyDispenser"
 MODEL = "Dispenser"
 ATTRIBUTION = "Data provided by Party Dispenser backend"
