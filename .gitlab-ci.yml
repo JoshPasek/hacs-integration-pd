@@ -58,21 +58,19 @@ pytest:
     - pytest tests/ -v
 
 # NEW — Phase 4
+# Phase 5 research override: node:22-alpine + system Chromium does not work with
+# @web/test-runner-playwright (playwrightLauncher), which looks for Playwright's own
+# chrome-headless-shell binary (not the system chromium-browser). Switched to the
+# official Playwright jammy image which ships the exact binary Playwright expects.
+# Playwright version must match the version in package-lock.json (currently 1.59.1).
 test-card:
   stage: test
-  image: node:22-alpine
+  image: mcr.microsoft.com/playwright:v1.59.1-jammy
   cache:
-    key: npm-$CI_COMMIT_REF_SLUG
+    key: npm-playwright-$CI_COMMIT_REF_SLUG
     paths:
       - .cache/npm/
       - www/community/party-dispenser-card/node_modules/
-  before_script:
-    # Chromium for Playwright (wtr uses playwrightLauncher product: 'chromium').
-    # If V8 coverage API is unreliable on this runner's Alpine Chromium, swap
-    # the image: field above to `mcr.microsoft.com/playwright:v1.x-jammy`.
-    - apk add --no-cache chromium nss freetype harfbuzz ca-certificates ttf-freefont
-    - export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-    - export PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser
   script:
     - cd www/community/party-dispenser-card
     - npm ci
