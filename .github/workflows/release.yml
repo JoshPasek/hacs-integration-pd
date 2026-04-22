@@ -1,0 +1,27 @@
+# GitHub release from annotated tag.
+# Triggered when a v* tag arrives via the GitLab mirror push (Plan 05-02 Task 2).
+# Source: https://github.com/ghalactic/github-release-from-tag
+# See .planning/phases/05-ci-github-mirror-release-automation/05-RESEARCH.md § Pattern 3.
+---
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # required for annotated tag body access (RESEARCH Pitfall 6)
+
+      - uses: ghalactic/github-release-from-tag@v6
+        with:
+          generateReleaseNotes: "false"
+          makeLatest: "true"
