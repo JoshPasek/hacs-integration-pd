@@ -132,5 +132,6 @@ mirror-to-github:
         -H "Accept: application/vnd.github+json" \
         "https://api.github.com/repos/${GITHUB_MIRROR_OWNER}/${GITHUB_MIRROR_REPO}/git/refs/tags/${CI_COMMIT_TAG}" \
         -w "Delete tag HTTP: %{http_code}\n" || true
-      git push "https://oauth2:${GITHUB_MIRROR_PAT}@github.com/${GITHUB_MIRROR_OWNER}/${GITHUB_MIRROR_REPO}.git" "refs/tags/${CI_COMMIT_TAG}"
+      sleep 3
+      git push --force "https://oauth2:${GITHUB_MIRROR_PAT}@github.com/${GITHUB_MIRROR_OWNER}/${GITHUB_MIRROR_REPO}.git" "refs/tags/${CI_COMMIT_TAG}"
       echo "Tag ${CI_COMMIT_TAG} re-pushed."
