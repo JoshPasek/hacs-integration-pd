@@ -44,6 +44,11 @@ ruff:
 
 pytest:
   stage: test
+  before_script:
+    # python:3.13-slim lacks gcc; lru-dict (transitive dep of pytest-homeassistant-custom-component)
+    # requires compilation. Install build-essential to provide gcc.
+    # Phase 5 research override: pre-existing CI failure discovered during mirror pipeline trigger.
+    - apt-get update -qq && apt-get install -y --no-install-recommends build-essential
   script:
     # editable_mode=compat makes setuptools add the repo to sys.path instead of
     # installing an editable finder hook; HA's _get_custom_components iterates

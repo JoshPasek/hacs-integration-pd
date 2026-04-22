@@ -20,7 +20,7 @@
     "sourceMap": true,
     "outDir": "./dist",
     "importHelpers": true,
-    "types": ["sinon", "node"]
+    "types": ["sinon", "node", "mocha"]
   },
   "include": ["src/**/*.ts", "test/**/*.ts"],
   "exclude": ["node_modules", "dist"]
