@@ -1,0 +1,41 @@
+order_recipe:
+  name: Order recipe
+  description: Place an order on the dispenser from an existing recipe.
+  fields:
+    recipe_id:
+      name: Recipe ID
+      description: The UUID of the recipe to order.
+      required: true
+      example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+      selector:
+        text:
+    session_uid:
+      name: Session UID
+      description: Identifier stored on the order — defaults to "home-assistant".
+      required: false
+      example: "home-assistant"
+      selector:
+        text:
+
+cancel_order:
+  name: Cancel order
+  description: Cancel a queued or in-progress order.
+  fields:
+    order_id:
+      name: Order ID
+      description: The UUID of the order to cancel.
+      required: true
+      example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+      selector:
+        text:
+    session_uid:
+      name: Session UID
+      description: Must match the session UID the order was placed with — defaults to "home-assistant".
+      required: false
+      example: "home-assistant"
+      selector:
+        text:
+
+refresh:
+  name: Refresh
+  description: Force an immediate refresh of the Party Dispenser state (sensors).

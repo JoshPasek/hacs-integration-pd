@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+import voluptuous as vol
 from homeassistant.const import Platform
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.typing import ConfigType
@@ -29,6 +30,11 @@ if TYPE_CHECKING:
     from .coordinator import PartyDispenserConfigEntry
 
 PLATFORMS: list[Platform] = [Platform.SENSOR, Platform.BINARY_SENSOR]
+
+# Required by hassfest when async_setup is defined.
+# This integration is config-flow only (no YAML configuration);
+# ALLOW_EXTRA is a no-op but satisfies the hassfest CONFIG_SCHEMA check.
+CONFIG_SCHEMA = vol.Schema({}, extra=vol.ALLOW_EXTRA)
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
