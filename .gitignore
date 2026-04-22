@@ -30,6 +30,7 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+.planning
 
 # Node (for Phase 4 card build)
 node_modules/
